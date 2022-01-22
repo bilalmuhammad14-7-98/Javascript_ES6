@@ -27,3 +27,19 @@ console.log("Bilal".charAt(0));
 console.log("hello" + "  " + "welcome" + "Pakisatn");
 
 console.log("welcome to pakistan".toUpperCase());
+console.log("hello".toUpperCase());
+
+//  ++++++++++++++++++++++++++ Working with booleans
+
+var shouldbeTrue = true;
+console.log(shouldbeTrue === true);
+
+if (shouldbeTrue === false) {
+  console.log("True");
+} else {
+  console.log("false");
+}
+
+var hasContent = "";
+
+console.log(Boolean(hasContent));
