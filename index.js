@@ -86,32 +86,63 @@
 // Arrays
 // Collection of data
 
-var myArr = [1, 2, 3, "Muhammad", "Bilal"];
-console.log(myArr, "ARRRRRRRRRR");
-console.log(myArr.length, "LENGTH");
+// var myArr = [1, 2, 3, "Muhammad", "Bilal"];
+// console.log(myArr, "ARRRRRRRRRR");
+// console.log(myArr.length, "LENGTH");
 
-var nameArr = ["Bilal", "hamza", "sami"];
-nameArr.push("Waldo");
-console.log(nameArr, "arr");
-nameArr.pop();
-console.log(nameArr, "after pop");
-nameArr.push(["skbz", 100, 300, "bilal"]);
-console.log(nameArr[3]);
-console.log(nameArr[3]);
+// var nameArr = ["Bilal", "hamza", "sami"];
+// nameArr.push("Waldo");
+// console.log(nameArr, "arr");
+// nameArr.pop();
+// console.log(nameArr, "after pop");
+// nameArr.push(["skbz", 100, 300, "bilal"]);
+// console.log(nameArr[3]);
+// console.log(nameArr[3]);
 
-var numArr = [3, 2, 1];
-var charArr = ["a", "d", "b", "c"];
-console.log(charArr.sort(), "sort");
-console.log(numArr.sort(), "sort");
+// var numArr = [3, 2, 1];
+// var charArr = ["a", "d", "b", "c"];
+// console.log(charArr.sort(), "sort");
+// console.log(numArr.sort(), "sort");
 
-console.log(charArr.reverse(), "rev");
+// console.log(charArr.reverse(), "rev");
 
-console.log(numArr.concat(charArr, nameArr), "concat");
+// console.log(numArr.concat(charArr, nameArr), "concat");
 
-var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-var length = arr.length;
-console.log(arr[length - 2], "arrrrrrrrrrrrrrrrrrrrrrr");
+// var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// var length = arr.length;
+// console.log(arr[length - 2], "arrrrrrrrrrrrrrrrrrrrrrr");
 
-var slicearr = arr.slice(1, 8);
-console.log(slicearr, "sliced arr");
-console.log(arr, "after slice");
+// var slicearr = arr.slice(1, 8);
+// console.log(slicearr, "sliced arr");
+// console.log(arr, "after slice");
+
+// Variables
+
+var myName = "Muhammad Bilal";
+var num = 21;
+var arr = [1, 2, 3, 4, 5];
+var obj = {
+  name: "Muhammad Bilal",
+  age: 30,
+};
+console.log(myName);
+console.log(num);
+console.log(arr);
+console.log(obj);
+console.log(typeof obj);
+
+function sayHi() {
+  console.log("hI" + myName);
+}
+
+sayHi();
+
+var count = 1;
+function increment() {
+  count += 1;
+  console.log(count);
+}
+
+increment();
+increment();
+increment();
