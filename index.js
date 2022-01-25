@@ -118,31 +118,102 @@
 
 // Variables
 
-var myName = "Muhammad Bilal";
-var num = 21;
-var arr = [1, 2, 3, 4, 5];
-var obj = {
-  name: "Muhammad Bilal",
-  age: 30,
-};
-console.log(myName);
-console.log(num);
-console.log(arr);
-console.log(obj);
-console.log(typeof obj);
+// var myName = "Muhammad Bilal";
+// var num = 21;
+// var arr = [1, 2, 3, 4, 5];
+// var obj = {
+//   name: "Muhammad Bilal",
+//   age: 30,
+// };
+// console.log(myName);
+// console.log(num);
+// console.log(arr);
+// console.log(obj);
+// console.log(typeof obj);
+
+// function sayHi() {
+//   console.log("hI" + myName);
+// }
+
+// sayHi();
+
+// var count = 1;
+// function increment() {
+//   count += 1;
+//   console.log(count);
+// }
+
+// increment();
+// increment();
+// increment();
+
+// Working with Let and Const
 
 function sayHi() {
-  console.log("hI" + myName);
+  let sayHi = true;
+  let isLoading = true;
+
+  // let and const scope is only inside the block we cannot use it outside the block
+  // if we console.log myName outside the if -statement it throw an error
+  if (sayHi === true) {
+    let myName = "Muhammad";
+
+    if (isLoading) {
+      let myLastName = "Bilal";
+    }
+  }
+
+  // console.log(myName);
+  console.log(sayHi);
+}
+
+function sayHiTwo() {
+  let sayHi = false;
+  let isLoading = true;
+  let myName = "butt";
+
+  // In const if you used the above approach of not defining myName then in the if-statement you defined myName
+  // this is not applicable . This is the major difference between let and const
+
+  if (sayHi === true) {
+    myName = "Muhammad";
+  } else {
+    myName = "Bilal";
+  }
+
+  console.log(myName);
+}
+
+function sayHiThree() {
+  let sayHi = false;
+  let isLoading = true;
+  const myName = "Usman";
+
+  // In const if you used the above approach of not defining myName then in the if-statement you defined myName
+  // this is not applicable . This is the major difference between let and const
+
+  if (sayHi === "1") {
+    myName = "Muhammad";
+  } else {
+    myName = "Bilal";
+  }
+
+  console.log(myName);
 }
 
 sayHi();
+sayHiTwo();
+// sayHiThree();
 
-var count = 1;
-function increment() {
-  count += 1;
-  console.log(count);
-}
+const arr = [1, 2, 3];
+console.log(arr);
+arr.push(4);
+console.log(arr);
 
-increment();
-increment();
-increment();
+const object = {
+  name: "Muhammad ",
+};
+console.log(object);
+
+object.name = "Ali";
+console.log(object);
