@@ -220,52 +220,120 @@
 
 // If Else
 
-const isLoading = true;
+// const isLoading = true;
 
-if (isLoading) {
-  console.log("start loading");
-  // alert("hello");
-}
+// if (isLoading) {
+//   console.log("start loading");
+//   // alert("hello");
+// }
 
-const num = 5;
-console.log(typeof num);
+// const num = 5;
+// console.log(typeof num);
 
-const numone = "5";
-console.log(typeof numone);
+// const numone = "5";
+// console.log(typeof numone);
 
-console.log(num + numone);
-// this would give 55 beacse numone is of type string
+// console.log(num + numone);
+// // this would give 55 beacse numone is of type string
 
-const stringConversion = parseInt(numone);
-// this would give 10 beacse numone is converted into number
+// const stringConversion = parseInt(numone);
+// // this would give 10 beacse numone is converted into number
 
-console.log(num + stringConversion);
+// console.log(num + stringConversion);
 
-const myArr = [1, 2, 3];
-const newArr = [1, 2, 3];
+// const myArr = [1, 2, 3];
+// const newArr = [1, 2, 3];
 
-// this will evaluate to false because of their type
-console.log(myArr === newArr);
+// // this will evaluate to false because of their type
+// console.log(myArr === newArr);
 
-const myArrTwo = newArr;
-// This will evaluate to true becase they are referencing the same thing
-console.log(myArrTwo === newArr);
+// const myArrTwo = newArr;
+// // This will evaluate to true becase they are referencing the same thing
+// console.log(myArrTwo === newArr);
 
-const balance = 124;
-const itemCost = 123;
-const tax = 0.5;
-const isRunning = false;
+// const balance = 124;
+// const itemCost = 123;
+// const tax = 0.5;
+// const isRunning = false;
 
-if (balance >= itemCost) {
-  console.log("Balance ok! Checking tax");
-  if (tax >= 0.5) {
-    console.log("Tax amount too highhhhh");
+// if (balance >= itemCost) {
+//   console.log("Balance ok! Checking tax");
+//   if (tax >= 0.5) {
+//     console.log("Tax amount too highhhhh");
+//   }
+// }
+
+// if (balance >= itemCost && !isRunning) {
+//   console.log("Good to go yeahhh");
+// }
+
+// let number;
+// console.log(!number, "num");
+
+// Working with functions
+// A resuable piece of code to perform some functionality
+
+const name = "Muhammad";
+const lastname = "Bilal";
+
+function sayHi(name) {
+  if (!name) {
+    console.log("Please enter a name");
+  } else {
+    console.log("Hi" + " " + name);
   }
 }
 
-if (balance >= itemCost && !isRunning) {
-  console.log("Good to go yeahhh");
+function sayBye(nam, last) {
+  console.log("Bye" + " " + nam + " " + last);
 }
 
-let number;
-console.log(!number, "num");
+sayHi("Bilal");
+sayBye(name, lastname);
+
+function numDouble(num) {
+  const value = num * 2;
+  return value;
+}
+
+const valone = numDouble(20);
+const valtwo = numDouble(30);
+
+console.log(valone, "valone");
+console.log(valtwo, "valtwo");
+
+function sum(numone, numtwo) {
+  const res = numone + numtwo;
+  return res;
+}
+
+const sumres = sum(valone, valtwo);
+console.log(sumres, "sum");
+
+// We can also pass a function in parameters
+
+const squarednum = function (num) {
+  return num * num;
+};
+
+const adder = function (squarer, num2) {
+  const squarerd = squarer(10);
+  return squarerd + num2;
+};
+
+console.log(adder(squarednum, 20));
+
+// In objects are passed through their values can be changed and same is the case with array
+
+const data = { name: " Muhamad", age: 30 };
+
+function obj(objInfo) {
+  const age = (objInfo.age = 100);
+  return age;
+}
+
+console.log(data, "before");
+// here the age is 30
+console.log(obj(data));
+console.log(data, "after");
+// here the age is 100
