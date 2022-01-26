@@ -149,71 +149,123 @@
 
 // Working with Let and Const
 
-function sayHi() {
-  let sayHi = true;
-  let isLoading = true;
+// function sayHi() {
+//   let sayHi = true;
+//   let isLoading = true;
 
-  // let and const scope is only inside the block we cannot use it outside the block
-  // if we console.log myName outside the if -statement it throw an error
-  if (sayHi === true) {
-    let myName = "Muhammad";
+//   // let and const scope is only inside the block we cannot use it outside the block
+//   // if we console.log myName outside the if -statement it throw an error
+//   if (sayHi === true) {
+//     let myName = "Muhammad";
 
-    if (isLoading) {
-      let myLastName = "Bilal";
-    }
-  }
+//     if (isLoading) {
+//       let myLastName = "Bilal";
+//     }
+//   }
 
-  // console.log(myName);
-  console.log(sayHi);
+//   // console.log(myName);
+//   console.log(sayHi);
+// }
+
+// function sayHiTwo() {
+//   let sayHi = false;
+//   let isLoading = true;
+//   let myName = "butt";
+
+//   // In const if you used the above approach of not defining myName then in the if-statement you defined myName
+//   // this is not applicable . This is the major difference between let and const
+
+//   if (sayHi === true) {
+//     myName = "Muhammad";
+//   } else {
+//     myName = "Bilal";
+//   }
+
+//   console.log(myName);
+// }
+
+// function sayHiThree() {
+//   let sayHi = false;
+//   let isLoading = true;
+//   const myName = "Usman";
+
+//   // In const if you used the above approach of not defining myName then in the if-statement you defined myName
+//   // this is not applicable . This is the major difference between let and const
+
+//   if (sayHi === "1") {
+//     myName = "Muhammad";
+//   } else {
+//     myName = "Bilal";
+//   }
+
+//   console.log(myName);
+// }
+
+// sayHi();
+// sayHiTwo();
+// // sayHiThree();
+
+// const arr = [1, 2, 3];
+// console.log(arr);
+// arr.push(4);
+// console.log(arr);
+
+// const object = {
+//   name: "Muhammad ",
+// };
+// console.log(object);
+
+// object.name = "Ali";
+// console.log(object);
+
+// If Else
+
+const isLoading = true;
+
+if (isLoading) {
+  console.log("start loading");
+  // alert("hello");
 }
 
-function sayHiTwo() {
-  let sayHi = false;
-  let isLoading = true;
-  let myName = "butt";
+const num = 5;
+console.log(typeof num);
 
-  // In const if you used the above approach of not defining myName then in the if-statement you defined myName
-  // this is not applicable . This is the major difference between let and const
+const numone = "5";
+console.log(typeof numone);
 
-  if (sayHi === true) {
-    myName = "Muhammad";
-  } else {
-    myName = "Bilal";
+console.log(num + numone);
+// this would give 55 beacse numone is of type string
+
+const stringConversion = parseInt(numone);
+// this would give 10 beacse numone is converted into number
+
+console.log(num + stringConversion);
+
+const myArr = [1, 2, 3];
+const newArr = [1, 2, 3];
+
+// this will evaluate to false because of their type
+console.log(myArr === newArr);
+
+const myArrTwo = newArr;
+// This will evaluate to true becase they are referencing the same thing
+console.log(myArrTwo === newArr);
+
+const balance = 124;
+const itemCost = 123;
+const tax = 0.5;
+const isRunning = false;
+
+if (balance >= itemCost) {
+  console.log("Balance ok! Checking tax");
+  if (tax >= 0.5) {
+    console.log("Tax amount too highhhhh");
   }
-
-  console.log(myName);
 }
 
-function sayHiThree() {
-  let sayHi = false;
-  let isLoading = true;
-  const myName = "Usman";
-
-  // In const if you used the above approach of not defining myName then in the if-statement you defined myName
-  // this is not applicable . This is the major difference between let and const
-
-  if (sayHi === "1") {
-    myName = "Muhammad";
-  } else {
-    myName = "Bilal";
-  }
-
-  console.log(myName);
+if (balance >= itemCost && !isRunning) {
+  console.log("Good to go yeahhh");
 }
 
-sayHi();
-sayHiTwo();
-// sayHiThree();
-
-const arr = [1, 2, 3];
-console.log(arr);
-arr.push(4);
-console.log(arr);
-
-const object = {
-  name: "Muhammad ",
-};
-console.log(object);
-
-object.name = "Ali";
-console.log(object);
+let number;
+console.log(!number, "num");
