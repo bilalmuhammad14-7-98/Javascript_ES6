@@ -273,67 +273,105 @@
 // Working with functions
 // A resuable piece of code to perform some functionality
 
-const name = "Muhammad";
-const lastname = "Bilal";
+// const name = "Muhammad";
+// const lastname = "Bilal";
 
-function sayHi(name) {
-  if (!name) {
-    console.log("Please enter a name");
-  } else {
-    console.log("Hi" + " " + name);
+// function sayHi(name) {
+//   if (!name) {
+//     console.log("Please enter a name");
+//   } else {
+//     console.log("Hi" + " " + name);
+//   }
+// }
+
+// function sayBye(nam, last) {
+//   console.log("Bye" + " " + nam + " " + last);
+// }
+
+// sayHi("Bilal");
+// sayBye(name, lastname);
+
+// function numDouble(num) {
+//   const value = num * 2;
+//   return value;
+// }
+
+// const valone = numDouble(20);
+// const valtwo = numDouble(30);
+
+// console.log(valone, "valone");
+// console.log(valtwo, "valtwo");
+
+// function sum(numone, numtwo) {
+//   const res = numone + numtwo;
+//   return res;
+// }
+
+// const sumres = sum(valone, valtwo);
+// console.log(sumres, "sum");
+
+// // We can also pass a function in parameters
+
+// const squarednum = function (num) {
+//   return num * num;
+// };
+
+// const adder = function (squarer, num2) {
+//   const squarerd = squarer(10);
+//   return squarerd + num2;
+// };
+
+// console.log(adder(squarednum, 20));
+
+// // In objects are passed through their values can be changed and same is the case with array
+
+// const data = { name: " Muhamad", age: 30 };
+
+// function obj(objInfo) {
+//   const age = (objInfo.age = 100);
+//   return age;
+// }
+
+// console.log(data, "before");
+// // here the age is 30
+// console.log(obj(data));
+// console.log(data, "after");
+// // here the age is 100
+
+// Working with nested functions
+
+function squreandmult(num1, num2) {
+  function square(num1) {
+    return num1 * num1;
   }
+
+  function multbyten(x) {
+    return x * 10;
+  }
+
+  return square(num1) * multbyten(num2);
 }
 
-function sayBye(nam, last) {
-  console.log("Bye" + " " + nam + " " + last);
+console.log(squreandmult(2, 3));
+
+function nameFormatter(fname, lname, age) {
+  function concat(arg1, arg2) {
+    const name = arg1 + " " + arg2 + " ";
+    return name;
+  }
+
+  function dataFormatter(name, num) {
+    const formattedData = {
+      name: name,
+      age: num,
+    };
+
+    return formattedData;
+  }
+
+  const nameone = concat(fname, lname);
+
+  return dataFormatter(nameone, age);
 }
 
-sayHi("Bilal");
-sayBye(name, lastname);
-
-function numDouble(num) {
-  const value = num * 2;
-  return value;
-}
-
-const valone = numDouble(20);
-const valtwo = numDouble(30);
-
-console.log(valone, "valone");
-console.log(valtwo, "valtwo");
-
-function sum(numone, numtwo) {
-  const res = numone + numtwo;
-  return res;
-}
-
-const sumres = sum(valone, valtwo);
-console.log(sumres, "sum");
-
-// We can also pass a function in parameters
-
-const squarednum = function (num) {
-  return num * num;
-};
-
-const adder = function (squarer, num2) {
-  const squarerd = squarer(10);
-  return squarerd + num2;
-};
-
-console.log(adder(squarednum, 20));
-
-// In objects are passed through their values can be changed and same is the case with array
-
-const data = { name: " Muhamad", age: 30 };
-
-function obj(objInfo) {
-  const age = (objInfo.age = 100);
-  return age;
-}
-
-console.log(data, "before");
-// here the age is 30
-console.log(obj(data));
-console.log(data, "after");
-// here the age is 100
+console.log(nameFormatter("Muhammad", "Bilal", 30));
