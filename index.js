@@ -340,38 +340,115 @@
 
 // Working with nested functions
 
-function squreandmult(num1, num2) {
-  function square(num1) {
-    return num1 * num1;
-  }
+// function squreandmult(num1, num2) {
+//   function square(num1) {
+//     return num1 * num1;
+//   }
 
-  function multbyten(x) {
-    return x * 10;
-  }
+//   function multbyten(x) {
+//     return x * 10;
+//   }
 
-  return square(num1) * multbyten(num2);
+//   return square(num1) * multbyten(num2);
+// }
+
+// console.log(squreandmult(2, 3));
+
+// function nameFormatter(fname, lname, age) {
+//   function concat(arg1, arg2) {
+//     const name = arg1 + " " + arg2 + " ";
+//     return name;
+//   }
+
+//   function dataFormatter(name, num) {
+//     const formattedData = {
+//       name: name,
+//       age: num,
+//     };
+
+//     return formattedData;
+//   }
+
+//   const nameone = concat(fname, lname);
+
+//   return dataFormatter(nameone, age);
+// }
+
+// console.log(nameFormatter("Muhammad", "Bilal", 30));
+
+// Working with Advanced Functions
+
+var sayHi = () => {
+  console.log("Hello");
+};
+
+sayHi();
+
+const mult = (num1, num2) => {
+  return num1 * num2;
+};
+
+console.log(mult(3, 5));
+
+const users = [
+  { name: "bilal", age: 40 },
+  { name: "Usman", age: 30 },
+  { name: "Ahsna", age: 50 },
+];
+
+const mapFunctions = (arr) => arr.map((item) => item.name);
+
+console.log(mapFunctions(users));
+
+const add = (x, y) => x + y;
+
+console.log(add(4, 5));
+
+const squrer = (num) => num * num;
+console.log(squrer(10));
+
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const evennum = numbers.filter((num) => {
+  return num % 2 === 0;
+});
+
+console.log(evennum);
+
+const doubnum = (num) => {
+  const numConta = [];
+  num.forEach((n) => {
+    const doubled = n * 2;
+    numConta.push(doubled);
+  });
+
+  return numConta;
+};
+
+console.log(doubnum(numbers));
+
+const newMult = (x = 5, y = 10) => {
+  return x * y;
+};
+
+console.log(newMult());
+
+const stringsplit = (str) => {
+  return str.split(" ");
+};
+
+console.log(stringsplit("hi there sir"));
+
+// const logAllArg = (x, y, z) => {
+//   console.log(arguments[0]);
+// };
+
+// logAllArg(1, 2, 3);
+function Dog(years, breed) {
+  this.age = years;
+  this.type = breed;
 }
 
-console.log(squreandmult(2, 3));
+const spike = new Dog(20, "pol");
 
-function nameFormatter(fname, lname, age) {
-  function concat(arg1, arg2) {
-    const name = arg1 + " " + arg2 + " ";
-    return name;
-  }
-
-  function dataFormatter(name, num) {
-    const formattedData = {
-      name: name,
-      age: num,
-    };
-
-    return formattedData;
-  }
-
-  const nameone = concat(fname, lname);
-
-  return dataFormatter(nameone, age);
-}
-
-console.log(nameFormatter("Muhammad", "Bilal", 30));
+console.log(spike);
