@@ -378,77 +378,154 @@
 
 // Working with Advanced Functions
 
-var sayHi = () => {
-  console.log("Hello");
-};
-
-sayHi();
-
-const mult = (num1, num2) => {
-  return num1 * num2;
-};
-
-console.log(mult(3, 5));
-
-const users = [
-  { name: "bilal", age: 40 },
-  { name: "Usman", age: 30 },
-  { name: "Ahsna", age: 50 },
-];
-
-const mapFunctions = (arr) => arr.map((item) => item.name);
-
-console.log(mapFunctions(users));
-
-const add = (x, y) => x + y;
-
-console.log(add(4, 5));
-
-const squrer = (num) => num * num;
-console.log(squrer(10));
-
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-const evennum = numbers.filter((num) => {
-  return num % 2 === 0;
-});
-
-console.log(evennum);
-
-const doubnum = (num) => {
-  const numConta = [];
-  num.forEach((n) => {
-    const doubled = n * 2;
-    numConta.push(doubled);
-  });
-
-  return numConta;
-};
-
-console.log(doubnum(numbers));
-
-const newMult = (x = 5, y = 10) => {
-  return x * y;
-};
-
-console.log(newMult());
-
-const stringsplit = (str) => {
-  return str.split(" ");
-};
-
-console.log(stringsplit("hi there sir"));
-
-// const logAllArg = (x, y, z) => {
-//   console.log(arguments[0]);
+// var sayHi = () => {
+//   console.log("Hello");
 // };
 
-// logAllArg(1, 2, 3);
-function Dog(years, breed) {
-  this.age = years;
-  this.type = breed;
+// sayHi();
+
+// const mult = (num1, num2) => {
+//   return num1 * num2;
+// };
+
+// console.log(mult(3, 5));
+
+// const users = [
+//   { name: "bilal", age: 40 },
+//   { name: "Usman", age: 30 },
+//   { name: "Ahsna", age: 50 },
+// ];
+
+// const mapFunctions = (arr) => arr.map((item) => item.name);
+
+// console.log(mapFunctions(users));
+
+// const add = (x, y) => x + y;
+
+// console.log(add(4, 5));
+
+// const squrer = (num) => num * num;
+// console.log(squrer(10));
+
+// const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// const evennum = numbers.filter((num) => {
+//   return num % 2 === 0;
+// });
+
+// console.log(evennum);
+
+// const doubnum = (num) => {
+//   const numConta = [];
+//   num.forEach((n) => {
+//     const doubled = n * 2;
+//     numConta.push(doubled);
+//   });
+
+//   return numConta;
+// };
+
+// console.log(doubnum(numbers));
+
+// const newMult = (x = 5, y = 10) => {
+//   return x * y;
+// };
+
+// console.log(newMult());
+
+// const stringsplit = (str) => {
+//   return str.split(" ");
+// };
+
+// console.log(stringsplit("hi there sir"));
+
+// // const logAllArg = (x, y, z) => {
+// //   console.log(arguments[0]);
+// // };
+
+// // logAllArg(1, 2, 3);
+// function Dog(years, breed) {
+//   this.age = years;
+//   this.type = breed;
+// }
+
+// const spike = new Dog(20, "pol");
+
+// console.log(spike);
+
+// Working with switch statements
+
+const fruit = "mango";
+
+const fruitLogger = (fruit) => {
+  switch (fruit) {
+    case "apple":
+      console.log("yes it is apple");
+      break;
+    case "orange":
+      console.log("yes it is orange");
+      break;
+    default:
+      console.log("its is some other fruit");
+  }
+};
+
+fruitLogger("orange");
+
+const numCheck = (num) => {
+  let value;
+
+  switch (num) {
+    case 0:
+    case 1:
+    case 2:
+      value = "Low range";
+      break;
+
+    case 3:
+    case 4:
+    case 5:
+      value = "Mid range";
+      break;
+
+    case 6:
+    case 7:
+    case 8:
+      value = "High range";
+      break;
+
+    default:
+      value = "Please enter value between 0 and 9";
+      break;
+  }
+  setVol(value);
+
+  console.log("the value is" + value);
+};
+
+function setVol(n) {
+  console.log("volume set at" + " " + n);
 }
 
-const spike = new Dog(20, "pol");
+numCheck(1);
 
-console.log(spike);
+const dounutPicker = (flav) => {
+  switch (flav) {
+    case "s":
+      return "sprinkles";
+    case "c":
+      return "choclate glazed";
+    case "b":
+      return "bear claw";
+    default:
+      return "did not understand";
+  }
+};
+
+const dounuts = (selection) => {
+  const selectedDounut = dounutPicker(selection);
+
+  console.log("You have selected " + selectedDounut);
+};
+
+dounuts("e");
