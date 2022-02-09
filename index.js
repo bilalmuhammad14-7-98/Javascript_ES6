@@ -568,34 +568,68 @@
 
 //  ***************************************Working with FOR LOOOPS ***********************
 
-for (let i = 11; i >= 1; i--) {
-  console.log(i);
+// for (let i = 11; i >= 1; i--) {
+//   console.log(i);
+// }
+
+// const icecreams = ["vanilla", "choclate", "rocky road", "strawberry"];
+
+// function icecreamlopper(arr, t) {
+//   for (var i = 0; i < arr.length; i++) {
+//     if (arr[i] === t) {
+//       console.log(arr[i], i);
+//     }
+//   }
+// }
+
+// icecreamlopper(icecreams, "strawberry");
+
+// for (let i = 0; i <= 100; i++) {
+//   if (i % 2 == 0) {
+//     console.log("even number");
+//   } else if (i % 3 == 0) {
+//     console.log("divsible by three");
+//   } else if (i % 5 == 0) {
+//     console.log("divsible by five");
+//   } else {
+//     console.log(i);
+//   }
+// }
+
+// setTimeout(() => {
+//   console.log("One minute has passed");
+// }, 1000);
+
+// For in loops basically used to loop through an objects properties in arbitraroy order
+
+const data = ["bilal", "dan", "john", "smith", "lawrance"];
+
+for (const d of data) {
+  console.log(d, "nameeeeeeeeeeeeee");
 }
 
-const icecreams = ["vanilla", "choclate", "rocky road", "strawberry"];
+console.log(data[1]);
 
-function icecreamlopper(arr, t) {
-  for (var i = 0; i < arr.length; i++) {
-    if (arr[i] === t) {
-      console.log(arr[i], i);
-    }
-  }
+for (let props in data) {
+  // it will print the keys
+  console.log(props);
 }
 
-icecreamlopper(icecreams, "strawberry");
-
-for (let i = 0; i <= 100; i++) {
-  if (i % 2 == 0) {
-    console.log("even number");
-  } else if (i % 3 == 0) {
-    console.log("divsible by three");
-  } else if (i % 5 == 0) {
-    console.log("divsible by five");
-  } else {
-    console.log(i);
-  }
+for (let props in data) {
+  // it will print the data
+  console.log(data[props]);
 }
 
-setTimeout(() => {
-  console.log("One minute has passed");
-}, 1000);
+data.forEach((item) => {
+  console.log(item, "items");
+});
+
+const names = ["james", "james", "sally", "sally"];
+
+const uniquenames = new Set(names);
+
+console.log(uniquenames);
+
+uniquenames.forEach((item) => {
+  console.log(item);
+});
