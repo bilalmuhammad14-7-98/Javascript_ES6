@@ -455,77 +455,113 @@
 
 // Working with switch statements
 
-const fruit = "mango";
+// const fruit = "mango";
 
-const fruitLogger = (fruit) => {
-  switch (fruit) {
-    case "apple":
-      console.log("yes it is apple");
-      break;
-    case "orange":
-      console.log("yes it is orange");
-      break;
-    default:
-      console.log("its is some other fruit");
-  }
-};
+// const fruitLogger = (fruit) => {
+//   switch (fruit) {
+//     case "apple":
+//       console.log("yes it is apple");
+//       break;
+//     case "orange":
+//       console.log("yes it is orange");
+//       break;
+//     default:
+//       console.log("its is some other fruit");
+//   }
+// };
 
-fruitLogger("orange");
+// fruitLogger("orange");
 
-const numCheck = (num) => {
-  let value;
+// const numCheck = (num) => {
+//   let value;
 
-  switch (num) {
-    case 0:
-    case 1:
-    case 2:
-      value = "Low range";
-      break;
+//   switch (num) {
+//     case 0:
+//     case 1:
+//     case 2:
+//       value = "Low range";
+//       break;
 
-    case 3:
-    case 4:
-    case 5:
-      value = "Mid range";
-      break;
+//     case 3:
+//     case 4:
+//     case 5:
+//       value = "Mid range";
+//       break;
 
-    case 6:
-    case 7:
-    case 8:
-      value = "High range";
-      break;
+//     case 6:
+//     case 7:
+//     case 8:
+//       value = "High range";
+//       break;
 
-    default:
-      value = "Please enter value between 0 and 9";
-      break;
-  }
-  setVol(value);
+//     default:
+//       value = "Please enter value between 0 and 9";
+//       break;
+//   }
+//   setVol(value);
 
-  console.log("the value is" + value);
-};
+//   console.log("the value is" + value);
+// };
 
-function setVol(n) {
-  console.log("volume set at" + " " + n);
+// function setVol(n) {
+//   console.log("volume set at" + " " + n);
+// }
+
+// numCheck(1);
+
+// const dounutPicker = (flav) => {
+//   switch (flav) {
+//     case "s":
+//       return "sprinkles";
+//     case "c":
+//       return "choclate glazed";
+//     case "b":
+//       return "bear claw";
+//     default:
+//       return "did not understand";
+//   }
+// };
+
+// const dounuts = (selection) => {
+//   const selectedDounut = dounutPicker(selection);
+
+//   console.log("You have selected " + selectedDounut);
+// };
+
+// dounuts("e");
+
+//  ***************************************Working with loops ***********************
+
+let num = 0;
+
+while (num <= 10) {
+  console.log("hello");
+  console.log(num, "num");
+  num += 1;
 }
 
-numCheck(1);
+const names = ["Joe", "Dan", "Alan"];
+let index = 0;
 
-const dounutPicker = (flav) => {
-  switch (flav) {
-    case "s":
-      return "sprinkles";
-    case "c":
-      return "choclate glazed";
-    case "b":
-      return "bear claw";
-    default:
-      return "did not understand";
+while (true) {
+  if (names[index] === "Alan") {
+    console.log(names[index]);
+
+    break;
   }
-};
+  console.log(index, "index");
+  index += 1;
+}
 
-const dounuts = (selection) => {
-  const selectedDounut = dounutPicker(selection);
+let condition;
 
-  console.log("You have selected " + selectedDounut);
-};
+do {
+  const userInput = prompt("Enter q to exit");
+  console.log(userInput, "inpur");
 
-dounuts("e");
+  if (userInput === "q") {
+    condition = false;
+  } else {
+    condition = true;
+  }
+} while (condition);
