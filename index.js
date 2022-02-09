@@ -532,36 +532,70 @@
 
 //  ***************************************Working with loops ***********************
 
-let num = 0;
+// let num = 0;
 
-while (num <= 10) {
-  console.log("hello");
-  console.log(num, "num");
-  num += 1;
+// while (num <= 10) {
+//   console.log("hello");
+//   console.log(num, "num");
+//   num += 1;
+// }
+
+// const names = ["Joe", "Dan", "Alan"];
+// let index = 0;
+
+// while (true) {
+//   if (names[index] === "Alan") {
+//     console.log(names[index]);
+
+//     break;
+//   }
+//   console.log(index, "index");
+//   index += 1;
+// }
+
+// let condition;
+
+// do {
+//   const userInput = prompt("Enter q to exit");
+//   console.log(userInput, "inpur");
+
+//   if (userInput === "q") {
+//     condition = false;
+//   } else {
+//     condition = true;
+//   }
+// } while (condition);
+
+//  ***************************************Working with FOR LOOOPS ***********************
+
+for (let i = 11; i >= 1; i--) {
+  console.log(i);
 }
 
-const names = ["Joe", "Dan", "Alan"];
-let index = 0;
+const icecreams = ["vanilla", "choclate", "rocky road", "strawberry"];
 
-while (true) {
-  if (names[index] === "Alan") {
-    console.log(names[index]);
-
-    break;
+function icecreamlopper(arr, t) {
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] === t) {
+      console.log(arr[i], i);
+    }
   }
-  console.log(index, "index");
-  index += 1;
 }
 
-let condition;
+icecreamlopper(icecreams, "strawberry");
 
-do {
-  const userInput = prompt("Enter q to exit");
-  console.log(userInput, "inpur");
-
-  if (userInput === "q") {
-    condition = false;
+for (let i = 0; i <= 100; i++) {
+  if (i % 2 == 0) {
+    console.log("even number");
+  } else if (i % 3 == 0) {
+    console.log("divsible by three");
+  } else if (i % 5 == 0) {
+    console.log("divsible by five");
   } else {
-    condition = true;
+    console.log(i);
   }
-} while (condition);
+}
+
+setTimeout(() => {
+  console.log("One minute has passed");
+}, 1000);
