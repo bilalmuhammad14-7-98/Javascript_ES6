@@ -651,19 +651,15 @@
 // console.log(document.getElementById("first_text"));
 // const text = document.getElementById("firsttext");
 // text.innerHTML = "my name is ali";
-const appDiv = document.getElementById("app");
-const specialwords = appDiv.getElementsByTagName("span");
 
-console.log(specialwords);
+const myDiv = document.querySelectorAll(".dummy");
 
-for (const prop of specialwords) {
-  prop.innerHTML = "Test!!!!!!!!!!";
+const myDivSpan = document.querySelectorAll(".dummy span");
+
+for (const prop of myDiv) {
+  prop.style.color = "purple";
 }
 
-const totalwordschanged = document.getElementById("total");
-
-totalwordschanged.innerHTML = specialwords.length;
-
-const team = document.getElementsByTagName("li");
-console.log(team);
-team[2].innerHTML = "hussey";
+for (const prop of myDivSpan) {
+  prop.style.color = "yellow";
+}
