@@ -652,14 +652,21 @@
 // const text = document.getElementById("firsttext");
 // text.innerHTML = "my name is ali";
 
-const myDiv = document.querySelectorAll(".dummy");
+// const myDiv = document.querySelectorAll(".dummy");
 
-const myDivSpan = document.querySelectorAll(".dummy span");
+// const myDivSpan = document.querySelectorAll(".dummy span");
 
-for (const prop of myDiv) {
-  prop.style.color = "purple";
-}
+// for (const prop of myDiv) {
+//   prop.style.color = "purple";
+// }
 
-for (const prop of myDivSpan) {
-  prop.style.color = "yellow";
-}
+// for (const prop of myDivSpan) {
+//   prop.style.color = "yellow";
+// }
+
+const createDiv = document.getElementById("created");
+const newElement = document.createElement("p");
+newElement.innerHTML = "Hello welcome to Pakistan";
+console.log(newElement);
+
+createDiv.appendChild(newElement);
