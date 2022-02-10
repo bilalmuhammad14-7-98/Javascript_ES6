@@ -602,34 +602,50 @@
 
 // For in loops basically used to loop through an objects properties in arbitraroy order
 
-const data = ["bilal", "dan", "john", "smith", "lawrance"];
+// const data = ["bilal", "dan", "john", "smith", "lawrance"];
 
-for (const d of data) {
-  console.log(d, "nameeeeeeeeeeeeee");
-}
+// for (const d of data) {
+//   console.log(d, "nameeeeeeeeeeeeee");
+// }
 
-console.log(data[1]);
+// console.log(data[1]);
 
-for (let props in data) {
-  // it will print the keys
-  console.log(props);
-}
+// for (let props in data) {
+//   // it will print the keys
+//   console.log(props);
+// }
 
-for (let props in data) {
-  // it will print the data
-  console.log(data[props]);
-}
+// for (let props in data) {
+//   // it will print the data
+//   console.log(data[props]);
+// }
 
-data.forEach((item) => {
-  console.log(item, "items");
-});
+// data.forEach((item) => {
+//   console.log(item, "items");
+// });
 
-const names = ["james", "james", "sally", "sally"];
+// const names = ["james", "james", "sally", "sally"];
 
-const uniquenames = new Set(names);
+// const uniquenames = new Set(names);
 
-console.log(uniquenames);
+// console.log(uniquenames);
 
-uniquenames.forEach((item) => {
-  console.log(item);
-});
+// uniquenames.forEach((item) => {
+//   console.log(item);
+// });
+
+//  ***************************************Working with DOM ***********************
+
+/* 
+ 1) Programming interface for HTML and XML documents.
+ 2) Provides a structure represenetation of the documetn
+ 3) Defines methods to access the structure and manupulate it 
+ 4) Connects web pages to scripts or programming languages
+ 5) DOM is not a programming laguage, it provides a model for a web page
+ 6) The page content is sotred in the DOM and can be accessed and manipulated in javascript
+ 7) The DOM provides a representation of the document as a structured group of nodes and objects that have
+     properties and methods
+
+*/
+const tag = document.getElementsByTagName("p");
+console.log(tag[0].innerHTML);
