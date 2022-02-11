@@ -664,9 +664,55 @@
 //   prop.style.color = "yellow";
 // }
 
-const createDiv = document.getElementById("created");
-const newElement = document.createElement("p");
-newElement.innerHTML = "Hello welcome to Pakistan";
-console.log(newElement);
+const clickDiv = document.getElementById("clicky");
 
-createDiv.appendChild(newElement);
+const button = clickDiv.querySelector("button");
+
+button.addEventListener("click", logEvent);
+
+button.addEventListener("focus", logEvent);
+
+button.addEventListener("focusout", logEvent);
+
+function logEvent(event) {
+  button.innerText = "Please donot click";
+
+  button.removeEventListener("click", logEvent);
+  console.log(event.type);
+}
+
+const bckgrnd = document.getElementById("background");
+bckgrnd.addEventListener("mousedown", switchbckgrnd);
+bckgrnd.addEventListener("focusout", switchbckgrnd);
+
+function switchbckgrnd(e) {
+  if (e.type === "mousedown") {
+    bckgrnd.classList.add("background-color");
+  } else if (e.type === "focusout") {
+    bckgrnd.classList.toggle("background-color");
+  }
+}
+
+document.addEventListener("keydown", function (e) {
+  console.log(e.keyCode);
+});
+
+const divthree = document.getElementById("div3");
+const para = document.querySelector("p");
+const textArea = document.querySelector("textarea");
+const paraText = "user is typing";
+let timer;
+
+textArea.addEventListener("keydown", addText);
+textArea.addEventListener("keyup", removeText);
+
+function addText(e) {
+  para.innerText = paraText;
+}
+
+function removeText(e) {
+  clearTimeout(timer);
+  timer = setTimeout(() => {
+    para.innerText = "";
+  }, 3000);
+}
