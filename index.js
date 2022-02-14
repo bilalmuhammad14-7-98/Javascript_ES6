@@ -717,58 +717,35 @@
 //   }, 3000);
 // }
 
-var newList =
-  "<ul>\n" +
-  "<li>I am an item 1 </li>\n" +
-  "<li>I am an item 2 </li>\n" +
-  "<li>I am an item 3 </li>\n" +
-  "<li>I am an item 4 </li>\n" +
-  "</ul>";
+const mySecondArr = ["Jane Doe", "Sam", "Billy", "marie"];
+let name1, name2, name3;
 
-const myDiv = document.getElementById("myDiv");
-myDiv.innerHTML = newList;
+[name1, name2, name3, name4 = "default"] = mySecondArr;
+console.log(name4);
 
-const first = "Muhammad";
-const last = "Bilal";
-const age = 20;
+function returnArray(a) {
+  return ["dounuts", "choclate", "vanilla", "gummy bear"];
+}
 
-console.log(`Hello my name is ${first} ${last}. And my age is ${age}`);
+const [dounut, choclate, vanilla, gummybear] = returnArray();
 
-const dateNow = new Date();
-console.log(`Today is : ${dateNow.toLocaleString()}`);
+console.log(gummybear);
 
-console.log(`Result is: ${50 * 100}`);
+function findArr(arr, term) {
+  const result = arr.filter((item) => {
+    return item === term;
+  });
 
-const arr = [1, 2, 3, 4, 5];
+  return result;
+}
 
-const newArr = `${arr.map((num) => {
-  return `Your result is : ${num * 2}`;
-})}`;
+const [res] = findArr(["mike", "sam", "bill"], "bill");
 
-console.log(newArr);
+console.log([res]);
 
-const pizzaToppings = [
-  "cheese",
-  "mushrooms",
-  "sauce",
-  "pepporoni",
-  "pinecolad",
-];
+function sayHi(firstArg, ...restOfArgs) {
+  console.log(`hi ${firstArg}`);
+  console.log(restOfArgs);
+}
 
-const myPizzaDiv = `
-  <article>
-      <h1>Pizza Ingredients</h1>
-  <ul>
-  ${pizzaToppings
-    .map((item) => {
-      return `<li> ${item} </li>`;
-    })
-    .join("")}
-  </ul>
-  </article>
-  `;
-
-const pizzaDiv = document.getElementById("pizzaDiv");
-pizzaDiv.innerHTML = myPizzaDiv;
-
-console.log(myPizzaDiv);
+sayHi("bilal", 30, 40, "street 50", "street 60");
