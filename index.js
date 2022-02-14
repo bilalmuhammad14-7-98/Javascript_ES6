@@ -717,35 +717,124 @@
 //   }, 3000);
 // }
 
-const mySecondArr = ["Jane Doe", "Sam", "Billy", "marie"];
-let name1, name2, name3;
+// const mySecondArr = ["Jane Doe", "Sam", "Billy", "marie"];
+// let name1, name2, name3;
 
-[name1, name2, name3, name4 = "default"] = mySecondArr;
-console.log(name4);
+// [name1, name2, name3, name4 = "default"] = mySecondArr;
+// console.log(name4);
 
-function returnArray(a) {
-  return ["dounuts", "choclate", "vanilla", "gummy bear"];
+// function returnArray(a) {
+//   return ["dounuts", "choclate", "vanilla", "gummy bear"];
+// }
+
+// const [dounut, choclate, vanilla, gummybear] = returnArray();
+
+// console.log(gummybear);
+
+// function findArr(arr, term) {
+//   const result = arr.filter((item) => {
+//     return item === term;
+//   });
+
+//   return result;
+// }
+
+// const [res] = findArr(["mike", "sam", "bill"], "bill");
+
+// console.log([res]);
+
+// function sayHi(firstArg, ...restOfArgs) {
+//   console.log(`hi ${firstArg}`);
+//   console.log(restOfArgs);
+// }
+
+// sayHi("bilal", 30, 40, "street 50", "street 60");
+
+const myObj = {
+  firstName: "Muhammad",
+  lastName: "Bilal",
+  age: 40,
+  height: "4ft",
+};
+
+const { firstName: fname, lastName: lname, age, height } = myObj;
+
+console.log(fname, lname, age, height);
+
+function stateUser(obj) {
+  const { name = "default", memberType = "default" } = obj;
+  console.log(`My name is : ${name}, Membership Type: ${memberType}`);
+  // console.log(`Username is : ${name} , memberType is : ${memberType}`);
 }
 
-const [dounut, choclate, vanilla, gummybear] = returnArray();
+// stateUser({ name: "Bilal", memberType: "Premium" });
 
-console.log(gummybear);
+const memberone = { name: "Mike", memberType: "premium" };
+stateUser(memberone);
 
-function findArr(arr, term) {
-  const result = arr.filter((item) => {
-    return item === term;
-  });
+const obj7 = {
+  title: "My Address Book",
+  enteries: [
+    {
+      name: "Mikel",
+      age: 30,
+      address: "40 st washington",
+      other: {
+        cell: 65656,
+        email: "asdas@gmail.com",
+      },
+    },
+    {
+      name: "SAM",
+      age: 30,
+      address: "40 st washington",
+      other: {
+        cell: 65657,
+        email: "asdas@gmail.com",
+      },
+    },
+    {
+      name: "daneil",
+      age: 30,
+      address: "40 st washington",
+      other: {
+        cell: 65658,
+        email: "asdas@gmail.com",
+      },
+    },
+    {
+      name: "Mikel",
+      age: 30,
+      address: "40 st washington",
+      other: {
+        cell: 65659,
+        email: "asdas@gmail.com",
+      },
+    },
+  ],
+  myPhone: "444-444-111",
+};
 
-  return result;
+const { title, enteries } = obj7;
+
+for (const {
+  name,
+  address,
+  other: { cell },
+} of enteries) {
+  console.log(
+    `Name is : ${name} , address is : ${address}, cell is : ${cell}  `
+  );
 }
 
-const [res] = findArr(["mike", "sam", "bill"], "bill");
+const obj8 = {
+  prop1: "Welcome",
+  prop2: [20, 30],
+};
 
-console.log([res]);
+const {
+  prop1,
+  prop2: [, yy],
+} = obj8;
 
-function sayHi(firstArg, ...restOfArgs) {
-  console.log(`hi ${firstArg}`);
-  console.log(restOfArgs);
-}
-
-sayHi("bilal", 30, 40, "street 50", "street 60");
+console.log(prop1, yy);
