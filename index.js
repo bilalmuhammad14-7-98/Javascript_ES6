@@ -664,55 +664,111 @@
 //   prop.style.color = "yellow";
 // }
 
-const clickDiv = document.getElementById("clicky");
+// const clickDiv = document.getElementById("clicky");
 
-const button = clickDiv.querySelector("button");
+// const button = clickDiv.querySelector("button");
 
-button.addEventListener("click", logEvent);
+// button.addEventListener("click", logEvent);
 
-button.addEventListener("focus", logEvent);
+// button.addEventListener("focus", logEvent);
 
-button.addEventListener("focusout", logEvent);
+// button.addEventListener("focusout", logEvent);
 
-function logEvent(event) {
-  button.innerText = "Please donot click";
+// function logEvent(event) {
+//   button.innerText = "Please donot click";
 
-  button.removeEventListener("click", logEvent);
-  console.log(event.type);
-}
+//   button.removeEventListener("click", logEvent);
+//   console.log(event.type);
+// }
 
-const bckgrnd = document.getElementById("background");
-bckgrnd.addEventListener("mousedown", switchbckgrnd);
-bckgrnd.addEventListener("focusout", switchbckgrnd);
+// const bckgrnd = document.getElementById("background");
+// bckgrnd.addEventListener("mousedown", switchbckgrnd);
+// bckgrnd.addEventListener("focusout", switchbckgrnd);
 
-function switchbckgrnd(e) {
-  if (e.type === "mousedown") {
-    bckgrnd.classList.add("background-color");
-  } else if (e.type === "focusout") {
-    bckgrnd.classList.toggle("background-color");
-  }
-}
+// function switchbckgrnd(e) {
+//   if (e.type === "mousedown") {
+//     bckgrnd.classList.add("background-color");
+//   } else if (e.type === "focusout") {
+//     bckgrnd.classList.toggle("background-color");
+//   }
+// }
 
-document.addEventListener("keydown", function (e) {
-  console.log(e.keyCode);
-});
+// document.addEventListener("keydown", function (e) {
+//   console.log(e.keyCode);
+// });
 
-const divthree = document.getElementById("div3");
-const para = document.querySelector("p");
-const textArea = document.querySelector("textarea");
-const paraText = "user is typing";
-let timer;
+// const divthree = document.getElementById("div3");
+// const para = document.querySelector("p");
+// const textArea = document.querySelector("textarea");
+// const paraText = "user is typing";
+// let timer;
 
-textArea.addEventListener("keydown", addText);
-textArea.addEventListener("keyup", removeText);
+// textArea.addEventListener("keydown", addText);
+// textArea.addEventListener("keyup", removeText);
 
-function addText(e) {
-  para.innerText = paraText;
-}
+// function addText(e) {
+//   para.innerText = paraText;
+// }
 
-function removeText(e) {
-  clearTimeout(timer);
-  timer = setTimeout(() => {
-    para.innerText = "";
-  }, 3000);
-}
+// function removeText(e) {
+//   clearTimeout(timer);
+//   timer = setTimeout(() => {
+//     para.innerText = "";
+//   }, 3000);
+// }
+
+var newList =
+  "<ul>\n" +
+  "<li>I am an item 1 </li>\n" +
+  "<li>I am an item 2 </li>\n" +
+  "<li>I am an item 3 </li>\n" +
+  "<li>I am an item 4 </li>\n" +
+  "</ul>";
+
+const myDiv = document.getElementById("myDiv");
+myDiv.innerHTML = newList;
+
+const first = "Muhammad";
+const last = "Bilal";
+const age = 20;
+
+console.log(`Hello my name is ${first} ${last}. And my age is ${age}`);
+
+const dateNow = new Date();
+console.log(`Today is : ${dateNow.toLocaleString()}`);
+
+console.log(`Result is: ${50 * 100}`);
+
+const arr = [1, 2, 3, 4, 5];
+
+const newArr = `${arr.map((num) => {
+  return `Your result is : ${num * 2}`;
+})}`;
+
+console.log(newArr);
+
+const pizzaToppings = [
+  "cheese",
+  "mushrooms",
+  "sauce",
+  "pepporoni",
+  "pinecolad",
+];
+
+const myPizzaDiv = `
+  <article>
+      <h1>Pizza Ingredients</h1>
+  <ul>
+  ${pizzaToppings
+    .map((item) => {
+      return `<li> ${item} </li>`;
+    })
+    .join("")}
+  </ul>
+  </article>
+  `;
+
+const pizzaDiv = document.getElementById("pizzaDiv");
+pizzaDiv.innerHTML = myPizzaDiv;
+
+console.log(myPizzaDiv);
