@@ -750,91 +750,163 @@
 
 // sayHi("bilal", 30, 40, "street 50", "street 60");
 
-const myObj = {
-  firstName: "Muhammad",
-  lastName: "Bilal",
-  age: 40,
-  height: "4ft",
-};
+// const myObj = {
+//   firstName: "Muhammad",
+//   lastName: "Bilal",
+//   age: 40,
+//   height: "4ft",
+// };
 
-const { firstName: fname, lastName: lname, age, height } = myObj;
+// const { firstName: fname, lastName: lname, age, height } = myObj;
 
-console.log(fname, lname, age, height);
+// console.log(fname, lname, age, height);
 
-function stateUser(obj) {
-  const { name = "default", memberType = "default" } = obj;
-  console.log(`My name is : ${name}, Membership Type: ${memberType}`);
-  // console.log(`Username is : ${name} , memberType is : ${memberType}`);
+// function stateUser(obj) {
+//   const { name = "default", memberType = "default" } = obj;
+//   console.log(`My name is : ${name}, Membership Type: ${memberType}`);
+//   // console.log(`Username is : ${name} , memberType is : ${memberType}`);
+// }
+
+// // stateUser({ name: "Bilal", memberType: "Premium" });
+
+// const memberone = { name: "Mike", memberType: "premium" };
+// stateUser(memberone);
+
+// const obj7 = {
+//   title: "My Address Book",
+//   enteries: [
+//     {
+//       name: "Mikel",
+//       age: 30,
+//       address: "40 st washington",
+//       other: {
+//         cell: 65656,
+//         email: "asdas@gmail.com",
+//       },
+//     },
+//     {
+//       name: "SAM",
+//       age: 30,
+//       address: "40 st washington",
+//       other: {
+//         cell: 65657,
+//         email: "asdas@gmail.com",
+//       },
+//     },
+//     {
+//       name: "daneil",
+//       age: 30,
+//       address: "40 st washington",
+//       other: {
+//         cell: 65658,
+//         email: "asdas@gmail.com",
+//       },
+//     },
+//     {
+//       name: "Mikel",
+//       age: 30,
+//       address: "40 st washington",
+//       other: {
+//         cell: 65659,
+//         email: "asdas@gmail.com",
+//       },
+//     },
+//   ],
+//   myPhone: "444-444-111",
+// };
+
+// const { title, enteries } = obj7;
+
+// for (const {
+//   name,
+//   address,
+//   other: { cell },
+// } of enteries) {
+//   console.log(
+//     `Name is : ${name} , address is : ${address}, cell is : ${cell}  `
+//   );
+// }
+
+// const obj8 = {
+//   prop1: "Welcome",
+//   prop2: [20, 30],
+// };
+
+// const {
+//   prop1,
+//   prop2: [, yy],
+// } = obj8;
+
+// console.log(prop1, yy);
+
+// function checkIfNum(num) {
+//   if (isNaN(num)) {
+//     throw "this is not a number ";
+//   } else {
+//     console.log(num);
+//   }
+// }
+
+// checkIfNum("hi");
+
+let myNum = "hello";
+const myErrLog = [];
+
+function checkIfNum(num) {
+  if (isNaN(num)) {
+    throw "not a number";
+  } else {
+    console.log("yes, this is a number");
+  }
 }
 
-// stateUser({ name: "Bilal", memberType: "Premium" });
-
-const memberone = { name: "Mike", memberType: "premium" };
-stateUser(memberone);
-
-const obj7 = {
-  title: "My Address Book",
-  enteries: [
-    {
-      name: "Mikel",
-      age: 30,
-      address: "40 st washington",
-      other: {
-        cell: 65656,
-        email: "asdas@gmail.com",
-      },
-    },
-    {
-      name: "SAM",
-      age: 30,
-      address: "40 st washington",
-      other: {
-        cell: 65657,
-        email: "asdas@gmail.com",
-      },
-    },
-    {
-      name: "daneil",
-      age: 30,
-      address: "40 st washington",
-      other: {
-        cell: 65658,
-        email: "asdas@gmail.com",
-      },
-    },
-    {
-      name: "Mikel",
-      age: 30,
-      address: "40 st washington",
-      other: {
-        cell: 65659,
-        email: "asdas@gmail.com",
-      },
-    },
-  ],
-  myPhone: "444-444-111",
-};
-
-const { title, enteries } = obj7;
-
-for (const {
-  name,
-  address,
-  other: { cell },
-} of enteries) {
-  console.log(
-    `Name is : ${name} , address is : ${address}, cell is : ${cell}  `
-  );
+function errorHandler(e) {
+  myErrLog.push(e);
 }
 
-const obj8 = {
-  prop1: "Welcome",
-  prop2: [20, 30],
-};
+try {
+  checkIfNum(myNum);
+} catch (e) {
+  errorHandler(e);
+}
 
-const {
-  prop1,
-  prop2: [, yy],
-} = obj8;
+console.log("hellllooooooooooooo");
 
-console.log(prop1, yy);
+function MyString(string) {
+  if (typeof string === "string") {
+    this.value = string;
+    this.getValue = function () {
+      console.log("Your string : " + this.value + " .");
+    };
+  } else {
+    throw new StringExceptionError(string);
+  }
+}
+
+function StringExceptionError(value) {
+  this.value = value;
+  this.message = "This is not a string";
+  this.toString = function () {
+    return this.value + " : " + this.message;
+  };
+}
+
+function verifyString(s) {
+  let str;
+  try {
+    str = new MyString(s);
+  } catch (e) {
+    if (e instanceof StringExceptionError) {
+      console.log("String exception");
+    } else {
+      console.log("Other exception");
+    }
+  } finally {
+    console.log("finally runs");
+  }
+  return str;
+}
+
+const a = verifyString("I am a stirng");
+const b = verifyString(12312312);
+// console.log(a.getValue());
