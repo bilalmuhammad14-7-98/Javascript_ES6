@@ -849,64 +849,108 @@
 
 // checkIfNum("hi");
 
-let myNum = "hello";
-const myErrLog = [];
+// let myNum = "hello";
+// const myErrLog = [];
 
-function checkIfNum(num) {
-  if (isNaN(num)) {
-    throw "not a number";
-  } else {
-    console.log("yes, this is a number");
-  }
-}
+// function checkIfNum(num) {
+//   if (isNaN(num)) {
+//     throw "not a number";
+//   } else {
+//     console.log("yes, this is a number");
+//   }
+// }
 
-function errorHandler(e) {
-  myErrLog.push(e);
-}
+// function errorHandler(e) {
+//   myErrLog.push(e);
+// }
 
-try {
-  checkIfNum(myNum);
-} catch (e) {
-  errorHandler(e);
-}
+// try {
+//   checkIfNum(myNum);
+// } catch (e) {
+//   errorHandler(e);
+// }
 
-console.log("hellllooooooooooooo");
+// console.log("hellllooooooooooooo");
 
-function MyString(string) {
-  if (typeof string === "string") {
-    this.value = string;
-    this.getValue = function () {
-      console.log("Your string : " + this.value + " .");
-    };
-  } else {
-    throw new StringExceptionError(string);
-  }
-}
+// function MyString(string) {
+//   if (typeof string === "string") {
+//     this.value = string;
+//     this.getValue = function () {
+//       console.log("Your string : " + this.value + " .");
+//     };
+//   } else {
+//     throw new StringExceptionError(string);
+//   }
+// }
 
-function StringExceptionError(value) {
-  this.value = value;
-  this.message = "This is not a string";
-  this.toString = function () {
-    return this.value + " : " + this.message;
+// function StringExceptionError(value) {
+//   this.value = value;
+//   this.message = "This is not a string";
+//   this.toString = function () {
+//     return this.value + " : " + this.message;
+//   };
+// }
+
+// function verifyString(s) {
+//   let str;
+//   try {
+//     str = new MyString(s);
+//   } catch (e) {
+//     if (e instanceof StringExceptionError) {
+//       console.log("String exception");
+//     } else {
+//       console.log("Other exception");
+//     }
+//   } finally {
+//     console.log("finally runs");
+//   }
+//   return str;
+// }
+
+// const a = verifyString("I am a stirng");
+// const b = verifyString(12312312);
+// // console.log(a.getValue());
+
+function Ship() {
+  this.floats = true;
+  this.material = "steel";
+  this.whatAmI = function () {
+    console.log("I am made of: " + this.material);
   };
 }
 
-function verifyString(s) {
-  let str;
-  try {
-    str = new MyString(s);
-  } catch (e) {
-    if (e instanceof StringExceptionError) {
-      console.log("String exception");
-    } else {
-      console.log("Other exception");
-    }
-  } finally {
-    console.log("finally runs");
-  }
-  return str;
+const myShip = new Ship();
+console.log(myShip.floats);
+myShip.whatAmI();
+
+const name1 = {
+  name: "Bilal",
+  age: 16,
+  sayName: function () {
+    console.log("my name is " + this.name);
+  },
+};
+
+const name2 = Object.create(name1);
+name2.sayName();
+
+name2.name = "Joe";
+name2.sayName();
+
+function Animal(name, age, breed) {
+  this.name = name;
+  this.age = age;
+  this.breed = breed;
 }
 
-const a = verifyString("I am a stirng");
-const b = verifyString(12312312);
-// console.log(a.getValue());
+Animal.prototype.sayBreed = function () {
+  console.log(`I am a ${this.breed}`);
+};
+
+const cow = new Animal("Cow", 4, "australian");
+cow.sayBreed();
+// console.log(cow);
+
+const parrot = new Animal("parrot", 20, "persian");
+parrot.sayBreed();
+// console.log(parrot);
