@@ -955,147 +955,238 @@
 // parrot.sayBreed();
 // // console.log(parrot);
 
-class Person {
-  constructor(name, age) {
-    this.name = name;
-    this.age = age;
-  }
-  greetings() {
-    return "Classes are the coolest thing to learn";
+// class Person {
+//   constructor(name, age) {
+//     this.name = name;
+//     this.age = age;
+//   }
+//   greetings() {
+//     return "Classes are the coolest thing to learn";
+//   }
+
+//   static sayHey() {
+//     console.log("heyyyyyyy");
+//   }
+// }
+
+// class Employee extends Person {
+//   constructor(name, age, position) {
+//     super(name, age);
+//     this.position = position;
+//   }
+//   sayGreetings() {
+//     const parentString = super.greetings();
+//     console.log(`${this.name} thinks ${parentString}`);
+//   }
+// }
+
+// class Customer extends Person {
+//   constructor({ name = "customer", age = "n/a", contactMethod }) {
+//     super(age, name);
+//     this.contactMethod = contactMethod;
+//     this.accountCredit = null;
+//   }
+
+//   addCredit(amount) {
+//     this.accountCredit += amount;
+//   }
+
+//   reduceCredit(amount) {
+//     this.accountCredit -= amount;
+//   }
+
+//   // static mehthods cannot be called with instances of classes
+//   static sayHi() {
+//     console.log("hello");
+//   }
+
+//   static sayCustomerNames(c1, c2) {
+//     console.log(`${c1.age}`);
+//   }
+// }
+
+// const customer1 = new Customer({
+//   name: "Dan",
+//   age: 20,
+//   contactMethod: "email",
+// });
+// const customer2 = new Customer({
+//   name: "joe",
+//   age: 30,
+//   contactMethod: "email",
+// });
+
+// console.log(customer1.accountCredit, "before");
+// customer1.addCredit(100);
+// console.log(customer1.accountCredit, "after");
+// customer1.reduceCredit(50);
+// console.log(customer1.accountCredit, "after removal");
+
+// // static methods are called with the help of class name
+// Customer.sayHi();
+// Customer.sayHey();
+
+// Customer.sayCustomerNames(customer1, customer2);
+
+// class FamilyMember {
+//   constructor(lastName, firstName, relationship) {
+//     this.lastName = lastName;
+//     this.firstName = firstName;
+//     this.relationship = relationship;
+//   }
+
+//   sayFamilyName() {
+//     console.log(`We are the ${this.lastName}'s`);
+//   }
+// }
+
+// class FamilyGroup {
+//   constructor(parents) {
+//     this.parents = parents;
+//     this.children = [];
+//   }
+
+//   addMember(member) {
+//     this.children.push(member);
+//   }
+// }
+
+// const smithFamily = {
+//   1: ["smith", "george", "father"],
+//   2: ["smith", "catherine", "mom"],
+//   3: ["smith", "annie", "daughter"],
+//   4: ["smith", "will", "son"],
+// };
+
+// const createFamilyGroup = (famArr) => {
+//   const famGroup = new FamilyGroup();
+//   console.log(famGroup);
+//   for (const prop of famArr) {
+//     if (prop.relationship === "father" || prop.relationship === "mom") {
+//       famGroup.parents.push(prop);
+//     } else {
+//       famGroup.children.push(prop);
+//     }
+//   }
+
+//   // console.log(famGroup);
+//   return famGroup;
+// };
+
+// const createFamily = (famObj) => {
+//   const allMembers = [];
+//   for (const prop in famObj) {
+//     const [last, first, relationship] = famObj[prop];
+//     const newMember = new FamilyMember(last, first, relationship);
+//     allMembers.push(newMember);
+//   }
+
+//   const famGroup = createFamilyGroup(allMembers);
+//   return famGroup;
+// };
+
+// const smiths = createFamily(smithFamily);
+// console.log(smiths);
+
+// // const dad = new FamilyMember("smith", "george", "father");
+// // const mom = new FamilyMember("smith", "catherine", "mom");
+// // const annie = new FamilyMember("smith", "annie", "daughter");
+// // const will = new FamilyMember("smith", "will", "son");
+
+// // const theSmiths = new FamilyGroup([dad, mom]);
+// // console.log(theSmiths, "before");
+
+// // theSmiths.addMember(annie);
+// // theSmiths.addMember(will);
+// // console.log(theSmiths, "after");
+
+/*
+
+- A callback function is a function that is passed into another function as a parameter
+- This inner function is called at some point during the execution of the containing function
+- In other words, it's callled back at some specified point inside the containing function's body
+
+*/
+
+function shouldGoFirst(callback) {
+  setTimeout(() => {
+    console.log("i should always go first");
+    callback();
+  }, 2000);
+}
+
+function shouldGoSecond() {
+  console.log("I should always go second");
+}
+
+// shouldGoFirst(shouldGoSecond);
+
+function sumUpNumbers(num1, num2, callback) {
+  let summedValue;
+
+  setTimeout(() => {
+    summedValue = num1 + num2;
+    callback(summedValue);
+  }, 1000);
+}
+
+function summedValue(val) {
+  console.log(`the sum is : ${val}`);
+}
+
+// sumUpNumbers(10, 30, summedValue);
+
+function sayWhenDone(loopCount) {
+  console.log(`Done : Looped ${loopCount} times`);
+}
+
+function looper(arr, callback) {
+  let i = 0;
+  for (i; i < arr.length; i++) {
+    const name = arr[i];
+    const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1);
+    arr[i] = capitalizedName;
+
+    console.log(arr[i]);
   }
 
-  static sayHey() {
-    console.log("heyyyyyyy");
+  callback(i);
+}
+
+const myNames = ["sam", "ban", "mark", "uthred"];
+
+// looper(myNames, sayWhenDone);
+
+function anotherLogger(num1, num2, callback) {
+  const sqandsumnums = num1 * num1 + num2 * num2;
+  console.log(sqandsumnums);
+
+  if (callback) {
+    callback(sqandsumnums);
   }
 }
 
-class Employee extends Person {
-  constructor(name, age, position) {
-    super(name, age);
-    this.position = position;
-  }
-  sayGreetings() {
-    const parentString = super.greetings();
-    console.log(`${this.name} thinks ${parentString}`);
-  }
-}
+// anotherLogger(5, 5, function (p) {
+//   console.log(`the sumed and squred value is ${p}`);
+// });
 
-class Customer extends Person {
-  constructor({ name = "customer", age = "n/a", contactMethod }) {
-    super(age, name);
-    this.contactMethod = contactMethod;
-    this.accountCredit = null;
-  }
+const myDiv = document.getElementById("main");
+const myButton = myDiv.querySelector("button");
+const fakeData = {
+  text: "Welcome to Hooland brother and sisters",
+};
 
-  addCredit(amount) {
-    this.accountCredit += amount;
-  }
-
-  reduceCredit(amount) {
-    this.accountCredit -= amount;
-  }
-
-  // static mehthods cannot be called with instances of classes
-  static sayHi() {
-    console.log("hello");
-  }
-
-  static sayCustomerNames(c1, c2) {
-    console.log(`${c1.age}`);
-  }
-}
-
-const customer1 = new Customer({
-  name: "Dan",
-  age: 20,
-  contactMethod: "email",
+myButton.addEventListener("click", function () {
+  requestData(populateDom);
 });
-const customer2 = new Customer({
-  name: "joe",
-  age: 30,
-  contactMethod: "email",
-});
 
-console.log(customer1.accountCredit, "before");
-customer1.addCredit(100);
-console.log(customer1.accountCredit, "after");
-customer1.reduceCredit(50);
-console.log(customer1.accountCredit, "after removal");
-
-// static methods are called with the help of class name
-Customer.sayHi();
-Customer.sayHey();
-
-Customer.sayCustomerNames(customer1, customer2);
-
-class FamilyMember {
-  constructor(lastName, firstName, relationship) {
-    this.lastName = lastName;
-    this.firstName = firstName;
-    this.relationship = relationship;
-  }
-
-  sayFamilyName() {
-    console.log(`We are the ${this.lastName}'s`);
-  }
+function requestData(cb) {
+  setTimeout(() => {
+    const data = fakeData.text;
+    cb(data);
+  }, 1000);
 }
 
-class FamilyGroup {
-  constructor(parents) {
-    this.parents = parents;
-    this.children = [];
-  }
-
-  addMember(member) {
-    this.children.push(member);
-  }
+function populateDom(data) {
+  myDiv.innerHTML += `<p> ${data}</p>`;
 }
-
-const smithFamily = {
-  1: ["smith", "george", "father"],
-  2: ["smith", "catherine", "mom"],
-  3: ["smith", "annie", "daughter"],
-  4: ["smith", "will", "son"],
-};
-
-const createFamilyGroup = (famArr) => {
-  const famGroup = new FamilyGroup();
-  console.log(famGroup);
-  for (const prop of famArr) {
-    if (prop.relationship === "father" || prop.relationship === "mom") {
-      famGroup.parents.push(prop);
-    } else {
-      famGroup.children.push(prop);
-    }
-  }
-
-  // console.log(famGroup);
-  return famGroup;
-};
-
-const createFamily = (famObj) => {
-  const allMembers = [];
-  for (const prop in famObj) {
-    const [last, first, relationship] = famObj[prop];
-    const newMember = new FamilyMember(last, first, relationship);
-    allMembers.push(newMember);
-  }
-
-  const famGroup = createFamilyGroup(allMembers);
-  return famGroup;
-};
-
-const smiths = createFamily(smithFamily);
-console.log(smiths);
-
-// const dad = new FamilyMember("smith", "george", "father");
-// const mom = new FamilyMember("smith", "catherine", "mom");
-// const annie = new FamilyMember("smith", "annie", "daughter");
-// const will = new FamilyMember("smith", "will", "son");
-
-// const theSmiths = new FamilyGroup([dad, mom]);
-// console.log(theSmiths, "before");
-
-// theSmiths.addMember(annie);
-// theSmiths.addMember(will);
-// console.log(theSmiths, "after");
