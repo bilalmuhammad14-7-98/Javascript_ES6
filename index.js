@@ -911,46 +911,191 @@
 // const b = verifyString(12312312);
 // // console.log(a.getValue());
 
-function Ship() {
-  this.floats = true;
-  this.material = "steel";
-  this.whatAmI = function () {
-    console.log("I am made of: " + this.material);
-  };
+// function Ship() {
+//   this.floats = true;
+//   this.material = "steel";
+//   this.whatAmI = function () {
+//     console.log("I am made of: " + this.material);
+//   };
+// }
+
+// const myShip = new Ship();
+// console.log(myShip.floats);
+// myShip.whatAmI();
+
+// const name1 = {
+//   name: "Bilal",
+//   age: 16,
+//   sayName: function () {
+//     console.log("my name is " + this.name);
+//   },
+// };
+
+// const name2 = Object.create(name1);
+// name2.sayName();
+
+// name2.name = "Joe";
+// name2.sayName();
+
+// function Animal(name, age, breed) {
+//   this.name = name;
+//   this.age = age;
+//   this.breed = breed;
+// }
+
+// Animal.prototype.sayBreed = function () {
+//   console.log(`I am a ${this.breed}`);
+// };
+
+// const cow = new Animal("Cow", 4, "australian");
+// cow.sayBreed();
+// // console.log(cow);
+
+// const parrot = new Animal("parrot", 20, "persian");
+// parrot.sayBreed();
+// // console.log(parrot);
+
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  greetings() {
+    return "Classes are the coolest thing to learn";
+  }
+
+  static sayHey() {
+    console.log("heyyyyyyy");
+  }
 }
 
-const myShip = new Ship();
-console.log(myShip.floats);
-myShip.whatAmI();
-
-const name1 = {
-  name: "Bilal",
-  age: 16,
-  sayName: function () {
-    console.log("my name is " + this.name);
-  },
-};
-
-const name2 = Object.create(name1);
-name2.sayName();
-
-name2.name = "Joe";
-name2.sayName();
-
-function Animal(name, age, breed) {
-  this.name = name;
-  this.age = age;
-  this.breed = breed;
+class Employee extends Person {
+  constructor(name, age, position) {
+    super(name, age);
+    this.position = position;
+  }
+  sayGreetings() {
+    const parentString = super.greetings();
+    console.log(`${this.name} thinks ${parentString}`);
+  }
 }
 
-Animal.prototype.sayBreed = function () {
-  console.log(`I am a ${this.breed}`);
+class Customer extends Person {
+  constructor({ name = "customer", age = "n/a", contactMethod }) {
+    super(age, name);
+    this.contactMethod = contactMethod;
+    this.accountCredit = null;
+  }
+
+  addCredit(amount) {
+    this.accountCredit += amount;
+  }
+
+  reduceCredit(amount) {
+    this.accountCredit -= amount;
+  }
+
+  // static mehthods cannot be called with instances of classes
+  static sayHi() {
+    console.log("hello");
+  }
+
+  static sayCustomerNames(c1, c2) {
+    console.log(`${c1.age}`);
+  }
+}
+
+const customer1 = new Customer({
+  name: "Dan",
+  age: 20,
+  contactMethod: "email",
+});
+const customer2 = new Customer({
+  name: "joe",
+  age: 30,
+  contactMethod: "email",
+});
+
+console.log(customer1.accountCredit, "before");
+customer1.addCredit(100);
+console.log(customer1.accountCredit, "after");
+customer1.reduceCredit(50);
+console.log(customer1.accountCredit, "after removal");
+
+// static methods are called with the help of class name
+Customer.sayHi();
+Customer.sayHey();
+
+Customer.sayCustomerNames(customer1, customer2);
+
+class FamilyMember {
+  constructor(lastName, firstName, relationship) {
+    this.lastName = lastName;
+    this.firstName = firstName;
+    this.relationship = relationship;
+  }
+
+  sayFamilyName() {
+    console.log(`We are the ${this.lastName}'s`);
+  }
+}
+
+class FamilyGroup {
+  constructor(parents) {
+    this.parents = parents;
+    this.children = [];
+  }
+
+  addMember(member) {
+    this.children.push(member);
+  }
+}
+
+const smithFamily = {
+  1: ["smith", "george", "father"],
+  2: ["smith", "catherine", "mom"],
+  3: ["smith", "annie", "daughter"],
+  4: ["smith", "will", "son"],
 };
 
-const cow = new Animal("Cow", 4, "australian");
-cow.sayBreed();
-// console.log(cow);
+const createFamilyGroup = (famArr) => {
+  const famGroup = new FamilyGroup();
+  console.log(famGroup);
+  for (const prop of famArr) {
+    if (prop.relationship === "father" || prop.relationship === "mom") {
+      famGroup.parents.push(prop);
+    } else {
+      famGroup.children.push(prop);
+    }
+  }
 
-const parrot = new Animal("parrot", 20, "persian");
-parrot.sayBreed();
-// console.log(parrot);
+  // console.log(famGroup);
+  return famGroup;
+};
+
+const createFamily = (famObj) => {
+  const allMembers = [];
+  for (const prop in famObj) {
+    const [last, first, relationship] = famObj[prop];
+    const newMember = new FamilyMember(last, first, relationship);
+    allMembers.push(newMember);
+  }
+
+  const famGroup = createFamilyGroup(allMembers);
+  return famGroup;
+};
+
+const smiths = createFamily(smithFamily);
+console.log(smiths);
+
+// const dad = new FamilyMember("smith", "george", "father");
+// const mom = new FamilyMember("smith", "catherine", "mom");
+// const annie = new FamilyMember("smith", "annie", "daughter");
+// const will = new FamilyMember("smith", "will", "son");
+
+// const theSmiths = new FamilyGroup([dad, mom]);
+// console.log(theSmiths, "before");
+
+// theSmiths.addMember(annie);
+// theSmiths.addMember(will);
+// console.log(theSmiths, "after");
