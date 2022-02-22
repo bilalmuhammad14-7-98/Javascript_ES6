@@ -1192,113 +1192,166 @@
 // }
 
 //  ****************************  WORKING WITH PROMISES ********************************************
-const testPromise = new Promise((resolve, reject) => {
-  if (Math.random() > 0.5) {
-    reject("Promise no good! Rejected");
+// const testPromise = new Promise((resolve, reject) => {
+//   if (Math.random() > 0.5) {
+//     reject("Promise no good! Rejected");
+//   }
+//   setTimeout(() => {
+//     resolve("Promise Ok");
+//   }, 1000);
+// });
+
+// testPromise
+//   .then((resolveMessage) => {
+//     console.log(`Looks like : ${resolveMessage}`);
+//   })
+//   .then(() => {
+//     console.log("I should run after the promise is resolved");
+//   })
+//   .catch((err) => {
+//     console.log(`Error: ${err}`);
+//   });
+// function numAdder(n1, n2) {
+//   return new Promise((resolve, reject) => {
+//     if (Math.random() > 0.1) {
+//       reject("nope");
+//     }
+//     const addNums = n1 + n2;
+//     setTimeout(() => {
+//       resolve(addNums);
+//     }, 500);
+//   });
+// }
+
+// function numSquarer(num) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve(num * num);
+//     }, 1000);
+//   });
+// }
+
+// numAdder(10, 10)
+//   .then((data) => {
+//     return numSquarer(data);
+//   })
+//   .then((moredata) => {
+//     console.log(moredata);
+//   })
+//   .catch((err) => {
+//     console.log(`Error : ${err}`);
+//   });
+
+// const prom = Promise.resolve([10, 20, 30]);
+
+// prom
+//   .then((nums) => nums.map((num) => num * 10))
+//   .then((transformedNums) => console.log(transformedNums));
+
+// const anotherProm = Promise.resolve({ text: "Resolved" });
+
+// anotherProm.then((data) => {
+//   console.log(data);
+// });
+
+// Promise.reject().then(
+//   (res) => {
+//     console.log("res");
+//   },
+//   (err) => {
+//     console.log("rejected");
+//   }
+// );
+
+// function timeLogger(message, time) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve(message);
+//     }, time);
+
+//     if (typeof message !== "string" || typeof time !== "number") {
+//       reject("please enter valid credentials");
+//     }
+//   });
+// }
+
+// timeLogger("first", 3000)
+//   .then((msg) => {
+//     console.log(msg);
+//     return timeLogger("second", 800);
+//   })
+//   .then((msg) => {
+//     console.log(msg);
+//     return timeLogger("third", 500);
+//   })
+//   .then((msg) => {
+//     console.log(msg);
+//     return timeLogger("fourth", 500);
+//   })
+//   .then((msg) => {
+//     console.log(msg);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+// const p1 = Promise.resolve("A");
+// const p2 = Promise.resolve("B");
+// const p3 = Promise.resolve("C");
+
+// Promise.all([p1, p2, p3]).then((data) => {
+//   console.log(data);
+// });
+
+//  ****************************  WORKING WITH FETCH API ********************************************
+
+const myDiv = document.getElementById("planet");
+const myButton = document.getElementById("button");
+const mySecondButton = document.getElementById("otherButton");
+
+myButton.addEventListener("click", getPlanet);
+mySecondButton.addEventListener("click", getPlanets);
+
+function getPlanet() {
+  const randomNum = Math.floor(Math.random() * 10) + 1;
+  fetch(`https://swapi.dev/api/planets/${randomNum}/`)
+    .then((data) => data.json())
+    .then((d) => populatePlanet(d))
+    .catch((err) => console.log(err.message));
+}
+
+function getPlanets() {
+  fetch(`https://swapi.dev/api/planets`)
+    .then((data) => data.json())
+    .then((planets) => processPlanets(planets.results));
+}
+
+function processPlanets(planetsArray) {
+  for (const prop of planetsArray) {
+    populatePlanet(prop);
   }
-  setTimeout(() => {
-    resolve("Promise Ok");
-  }, 1000);
-});
-
-testPromise
-  .then((resolveMessage) => {
-    console.log(`Looks like : ${resolveMessage}`);
-  })
-  .then(() => {
-    console.log("I should run after the promise is resolved");
-  })
-  .catch((err) => {
-    console.log(`Error: ${err}`);
-  });
-function numAdder(n1, n2) {
-  return new Promise((resolve, reject) => {
-    if (Math.random() > 0.1) {
-      reject("nope");
-    }
-    const addNums = n1 + n2;
-    setTimeout(() => {
-      resolve(addNums);
-    }, 500);
-  });
 }
 
-function numSquarer(num) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(num * num);
-    }, 1000);
-  });
+function populatePlanet(planetObj) {
+  console.log(planetObj);
+  const { name, climate, terrain, population, orbital_period } = planetObj;
+  let pop;
+
+  const planetDiv = `
+  <div class="planets">
+  <h1>${name}</h1>
+  <p> ${name} has a climate that is ${climate}. 
+  The terrain is ${terrain} with a population of 
+  ${
+    population === "unknown"
+      ? (pop = population)
+      : (pop = parseInt(population).toLocaleString())
+  }.
+  The orbital period is ${orbital_period}
+
+  </p>
+  </div>
+  `;
+
+  myDiv.insertAdjacentHTML("beforeend", planetDiv);
 }
-
-numAdder(10, 10)
-  .then((data) => {
-    return numSquarer(data);
-  })
-  .then((moredata) => {
-    console.log(moredata);
-  })
-  .catch((err) => {
-    console.log(`Error : ${err}`);
-  });
-
-const prom = Promise.resolve([10, 20, 30]);
-
-prom
-  .then((nums) => nums.map((num) => num * 10))
-  .then((transformedNums) => console.log(transformedNums));
-
-const anotherProm = Promise.resolve({ text: "Resolved" });
-
-anotherProm.then((data) => {
-  console.log(data);
-});
-
-Promise.reject().then(
-  (res) => {
-    console.log("res");
-  },
-  (err) => {
-    console.log("rejected");
-  }
-);
-
-function timeLogger(message, time) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(message);
-    }, time);
-
-    if (typeof message !== "string" || typeof time !== "number") {
-      reject("please enter valid credentials");
-    }
-  });
-}
-
-timeLogger("first", 3000)
-  .then((msg) => {
-    console.log(msg);
-    return timeLogger("second", 800);
-  })
-  .then((msg) => {
-    console.log(msg);
-    return timeLogger("third", 500);
-  })
-  .then((msg) => {
-    console.log(msg);
-    return timeLogger("fourth", 500);
-  })
-  .then((msg) => {
-    console.log(msg);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-const p1 = Promise.resolve("A");
-const p2 = Promise.resolve("B");
-const p3 = Promise.resolve("C");
-
-Promise.all([p1, p2, p3]).then((data) => {
-  console.log(data);
-});
