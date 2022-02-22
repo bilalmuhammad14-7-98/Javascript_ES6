@@ -1108,85 +1108,197 @@
 
 */
 
-function shouldGoFirst(callback) {
-  setTimeout(() => {
-    console.log("i should always go first");
-    callback();
-  }, 2000);
-}
+// function shouldGoFirst(callback) {
+//   setTimeout(() => {
+//     console.log("i should always go first");
+//     callback();
+//   }, 2000);
+// }
 
-function shouldGoSecond() {
-  console.log("I should always go second");
-}
+// function shouldGoSecond() {
+//   console.log("I should always go second");
+// }
 
-// shouldGoFirst(shouldGoSecond);
+// // shouldGoFirst(shouldGoSecond);
 
-function sumUpNumbers(num1, num2, callback) {
-  let summedValue;
+// function sumUpNumbers(num1, num2, callback) {
+//   let summedValue;
 
-  setTimeout(() => {
-    summedValue = num1 + num2;
-    callback(summedValue);
-  }, 1000);
-}
+//   setTimeout(() => {
+//     summedValue = num1 + num2;
+//     callback(summedValue);
+//   }, 1000);
+// }
 
-function summedValue(val) {
-  console.log(`the sum is : ${val}`);
-}
+// function summedValue(val) {
+//   console.log(`the sum is : ${val}`);
+// }
 
-// sumUpNumbers(10, 30, summedValue);
+// // sumUpNumbers(10, 30, summedValue);
 
-function sayWhenDone(loopCount) {
-  console.log(`Done : Looped ${loopCount} times`);
-}
+// function sayWhenDone(loopCount) {
+//   console.log(`Done : Looped ${loopCount} times`);
+// }
 
-function looper(arr, callback) {
-  let i = 0;
-  for (i; i < arr.length; i++) {
-    const name = arr[i];
-    const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1);
-    arr[i] = capitalizedName;
+// function looper(arr, callback) {
+//   let i = 0;
+//   for (i; i < arr.length; i++) {
+//     const name = arr[i];
+//     const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1);
+//     arr[i] = capitalizedName;
 
-    console.log(arr[i]);
-  }
+//     console.log(arr[i]);
+//   }
 
-  callback(i);
-}
+//   callback(i);
+// }
 
-const myNames = ["sam", "ban", "mark", "uthred"];
+// const myNames = ["sam", "ban", "mark", "uthred"];
 
-// looper(myNames, sayWhenDone);
+// // looper(myNames, sayWhenDone);
 
-function anotherLogger(num1, num2, callback) {
-  const sqandsumnums = num1 * num1 + num2 * num2;
-  console.log(sqandsumnums);
+// function anotherLogger(num1, num2, callback) {
+//   const sqandsumnums = num1 * num1 + num2 * num2;
+//   console.log(sqandsumnums);
 
-  if (callback) {
-    callback(sqandsumnums);
-  }
-}
+//   if (callback) {
+//     callback(sqandsumnums);
+//   }
+// }
 
-// anotherLogger(5, 5, function (p) {
-//   console.log(`the sumed and squred value is ${p}`);
+// // anotherLogger(5, 5, function (p) {
+// //   console.log(`the sumed and squred value is ${p}`);
+// // });
+
+// const myDiv = document.getElementById("main");
+// const myButton = myDiv.querySelector("button");
+// const fakeData = {
+//   text: "Welcome to Hooland brother and sisters",
+// };
+
+// myButton.addEventListener("click", function () {
+//   requestData(populateDom);
 // });
 
-const myDiv = document.getElementById("main");
-const myButton = myDiv.querySelector("button");
-const fakeData = {
-  text: "Welcome to Hooland brother and sisters",
-};
+// function requestData(cb) {
+//   setTimeout(() => {
+//     const data = fakeData.text;
+//     cb(data);
+//   }, 1000);
+// }
 
-myButton.addEventListener("click", function () {
-  requestData(populateDom);
+// function populateDom(data) {
+//   myDiv.innerHTML += `<p> ${data}</p>`;
+// }
+
+//  ****************************  WORKING WITH PROMISES ********************************************
+const testPromise = new Promise((resolve, reject) => {
+  if (Math.random() > 0.5) {
+    reject("Promise no good! Rejected");
+  }
+  setTimeout(() => {
+    resolve("Promise Ok");
+  }, 1000);
 });
 
-function requestData(cb) {
-  setTimeout(() => {
-    const data = fakeData.text;
-    cb(data);
-  }, 1000);
+testPromise
+  .then((resolveMessage) => {
+    console.log(`Looks like : ${resolveMessage}`);
+  })
+  .then(() => {
+    console.log("I should run after the promise is resolved");
+  })
+  .catch((err) => {
+    console.log(`Error: ${err}`);
+  });
+function numAdder(n1, n2) {
+  return new Promise((resolve, reject) => {
+    if (Math.random() > 0.1) {
+      reject("nope");
+    }
+    const addNums = n1 + n2;
+    setTimeout(() => {
+      resolve(addNums);
+    }, 500);
+  });
 }
 
-function populateDom(data) {
-  myDiv.innerHTML += `<p> ${data}</p>`;
+function numSquarer(num) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(num * num);
+    }, 1000);
+  });
 }
+
+numAdder(10, 10)
+  .then((data) => {
+    return numSquarer(data);
+  })
+  .then((moredata) => {
+    console.log(moredata);
+  })
+  .catch((err) => {
+    console.log(`Error : ${err}`);
+  });
+
+const prom = Promise.resolve([10, 20, 30]);
+
+prom
+  .then((nums) => nums.map((num) => num * 10))
+  .then((transformedNums) => console.log(transformedNums));
+
+const anotherProm = Promise.resolve({ text: "Resolved" });
+
+anotherProm.then((data) => {
+  console.log(data);
+});
+
+Promise.reject().then(
+  (res) => {
+    console.log("res");
+  },
+  (err) => {
+    console.log("rejected");
+  }
+);
+
+function timeLogger(message, time) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(message);
+    }, time);
+
+    if (typeof message !== "string" || typeof time !== "number") {
+      reject("please enter valid credentials");
+    }
+  });
+}
+
+timeLogger("first", 3000)
+  .then((msg) => {
+    console.log(msg);
+    return timeLogger("second", 800);
+  })
+  .then((msg) => {
+    console.log(msg);
+    return timeLogger("third", 500);
+  })
+  .then((msg) => {
+    console.log(msg);
+    return timeLogger("fourth", 500);
+  })
+  .then((msg) => {
+    console.log(msg);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+const p1 = Promise.resolve("A");
+const p2 = Promise.resolve("B");
+const p3 = Promise.resolve("C");
+
+Promise.all([p1, p2, p3]).then((data) => {
+  console.log(data);
+});
