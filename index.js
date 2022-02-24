@@ -1305,53 +1305,112 @@
 
 //  ****************************  WORKING WITH FETCH API ********************************************
 
-const myDiv = document.getElementById("planet");
-const myButton = document.getElementById("button");
-const mySecondButton = document.getElementById("otherButton");
+// const myDiv = document.getElementById("planet");
+// const myButton = document.getElementById("button");
+// const mySecondButton = document.getElementById("otherButton");
 
-myButton.addEventListener("click", getPlanet);
-mySecondButton.addEventListener("click", getPlanets);
+// myButton.addEventListener("click", getPlanet);
+// mySecondButton.addEventListener("click", getPlanets);
 
-function getPlanet() {
-  const randomNum = Math.floor(Math.random() * 10) + 1;
-  fetch(`https://swapi.dev/api/planets/${randomNum}/`)
-    .then((data) => data.json())
-    .then((d) => populatePlanet(d))
-    .catch((err) => console.log(err.message));
+// function getPlanet() {
+//   const randomNum = Math.floor(Math.random() * 10) + 1;
+//   fetch(`https://swapi.dev/api/planets/${randomNum}/`)
+//     .then((data) => data.json())
+//     .then((d) => populatePlanet(d))
+//     .catch((err) => console.log(err.message));
+// }
+
+// function getPlanets() {
+//   fetch(`https://swapi.dev/api/planets`)
+//     .then((data) => data.json())
+//     .then((planets) => processPlanets(planets.results));
+// }
+
+// function processPlanets(planetsArray) {
+//   for (const prop of planetsArray) {
+//     populatePlanet(prop);
+//   }
+// }
+
+// function populatePlanet(planetObj) {
+//   console.log(planetObj);
+//   const { name, climate, terrain, population, orbital_period } = planetObj;
+//   let pop;
+
+//   const planetDiv = `
+//   <div class="planets">
+//   <h1>${name}</h1>
+//   <p> ${name} has a climate that is ${climate}.
+//   The terrain is ${terrain} with a population of
+//   ${
+//     population === "unknown"
+//       ? (pop = population)
+//       : (pop = parseInt(population).toLocaleString())
+//   }.
+//   The orbital period is ${orbital_period}
+
+//   </p>
+//   </div>
+//   `;
+
+//   myDiv.insertAdjacentHTML("beforeend", planetDiv);
+// }
+
+//  ****************************  REST AND SPREAD ********************************************
+
+function spreadFunction(...multipleArgs) {
+  console.log(multipleArgs);
 }
 
-function getPlanets() {
-  fetch(`https://swapi.dev/api/planets`)
-    .then((data) => data.json())
-    .then((planets) => processPlanets(planets.results));
+spreadFunction(1, 2, 3, 4, true, "hi", "hey");
+
+const arr1 = [1, 2, 3, 4, 5];
+const arr2 = [6, 7, 8, 9, 10];
+
+const arr3 = [...arr1, ...arr2];
+
+console.log(arr3);
+
+// Alternative to Function.prototype.apply
+function sayHello(x, y, z) {
+  console.log(`Hello ${x} ${y} ${z}`);
 }
 
-function processPlanets(planetsArray) {
-  for (const prop of planetsArray) {
-    populatePlanet(prop);
-  }
+const helloArray = ["bob", "jane", "mike"];
+// sayHello.apply(null, helloArray);
+
+sayHello(...helloArray);
+
+const res1 = ["kar", "spain", "usa"];
+const res2 = ["mango", "apple", "grapes"];
+const res3 = ["rice", "sugar", "ilaci"];
+
+const result = res1.concat(res2, res3);
+console.log(result);
+
+const num1 = [1, 2, 3, 6, 7, 8];
+const num2 = [4, 5];
+
+function data(arr1, arr2, index) {
+  const firstarr = arr1.slice(0, index);
+  const secondarr = arr1.slice(index);
+
+  const res = [...firstarr, ...arr2, ...secondarr];
+  console.log(res, "final");
 }
 
-function populatePlanet(planetObj) {
-  console.log(planetObj);
-  const { name, climate, terrain, population, orbital_period } = planetObj;
-  let pop;
+data(num1, num2, 3);
 
-  const planetDiv = `
-  <div class="planets">
-  <h1>${name}</h1>
-  <p> ${name} has a climate that is ${climate}. 
-  The terrain is ${terrain} with a population of 
-  ${
-    population === "unknown"
-      ? (pop = population)
-      : (pop = parseInt(population).toLocaleString())
-  }.
-  The orbital period is ${orbital_period}
+const obj = {
+  id: 1,
+  sayHi() {
+    console.log("helloe");
+  },
+  welcome() {
+    console.log("welcome to pak");
+  },
+};
 
-  </p>
-  </div>
-  `;
+obj.sayHi();
 
-  myDiv.insertAdjacentHTML("beforeend", planetDiv);
-}
+obj.welcome();
