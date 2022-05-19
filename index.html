@@ -10,6 +10,23 @@
   <body>
     <h1>Hello Welcome</h1>
 
-    <script src="index.js"></script>
+    <script>
+      class Car {
+        constructor(name, model) {
+          this.name = name;
+          this.model = model;
+        }
+
+        start() {
+          console.log(
+            `Name of the car is : ${this.name} and the model of the car is: ${this.model}`
+          );
+        }
+      }
+
+      toyota = new Car("altis", 2017);
+
+      toyota.start();
+    </script>
   </body>
 </html>
