@@ -1429,16 +1429,22 @@
 
 // 2) **************Finding counts of  duplicate elements in a given array ******************
 
-const months = ["may", "may", "june", "june", "june", "june", "july", "aug"];
+// const months = ["may", "may", "june", "june", "june", "june", "july", "aug"];
 
-const countOfDuplicates = months.reduce((obj, month) => {
-  if (obj[month] == undefined) {
-    obj[month] = 1;
-    return obj;
-  } else {
-    obj[month]++;
-    return obj;
-  }
-}, {});
+// const countOfDuplicates = months.reduce((obj, month) => {
+//   if (obj[month] == undefined) {
+//     obj[month] = 1;
+//     return obj;
+//   } else {
+//     obj[month]++;
+//     return obj;
+//   }
+// }, {});
 
-console.log(countOfDuplicates, "res");
+// console.log(countOfDuplicates, "res");
+
+// 3) **************Check if a given number is an integer ******************
+
+const validatevalue = "abc";
+
+console.log(isNaN(validatevalue));
