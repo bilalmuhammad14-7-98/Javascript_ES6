@@ -1419,10 +1419,26 @@
 
 // 1) **************Finding duplicate elements in a given array ******************
 
-const duplicateArray = [1, 2, 2, 3, 4, 5, 8, 5, 5, 6];
+// const duplicateArray = [1, 2, 2, 3, 4, 5, 8, 5, 5, 6];
 
-const duplicates = duplicateArray.filter((item, index, arr) => {
-  console.log(arr.indexOf(item), "index");
-  return arr.indexOf(item) !== index;
-});
-console.log(duplicates);
+// const duplicates = duplicateArray.filter((item, index, arr) => {
+//   console.log(arr.indexOf(item), "index");
+//   return arr.indexOf(item) !== index;
+// });
+// console.log(duplicates);
+
+// 2) **************Finding counts of  duplicate elements in a given array ******************
+
+const months = ["may", "may", "june", "june", "june", "june", "july", "aug"];
+
+const countOfDuplicates = months.reduce((obj, month) => {
+  if (obj[month] == undefined) {
+    obj[month] = 1;
+    return obj;
+  } else {
+    obj[month]++;
+    return obj;
+  }
+}, {});
+
+console.log(countOfDuplicates, "res");
