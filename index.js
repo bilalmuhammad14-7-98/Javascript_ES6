@@ -1445,6 +1445,17 @@
 
 // 3) **************Check if a given number is an integer ******************
 
-const validatevalue = "abc";
+// const validatevalue = "abc";
 
-console.log(isNaN(validatevalue));
+// console.log(isNaN(validatevalue));
+
+// 4) **************How To Sort a Number array ******************
+
+const arr = [10, 8, 4, 5, 76, 3, 4, 12];
+
+const sortedArray = arr.sort((a, b) => {
+  console.log(a - b);
+  return a - b;
+});
+
+console.log(sortedArray);
