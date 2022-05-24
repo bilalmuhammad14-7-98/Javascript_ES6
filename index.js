@@ -1358,59 +1358,71 @@
 
 //  ****************************  REST AND SPREAD ********************************************
 
-function spreadFunction(...multipleArgs) {
-  console.log(multipleArgs);
-}
+// function spreadFunction(...multipleArgs) {
+//   console.log(multipleArgs);
+// }
 
-spreadFunction(1, 2, 3, 4, true, "hi", "hey");
+// spreadFunction(1, 2, 3, 4, true, "hi", "hey");
 
-const arr1 = [1, 2, 3, 4, 5];
-const arr2 = [6, 7, 8, 9, 10];
+// const arr1 = [1, 2, 3, 4, 5];
+// const arr2 = [6, 7, 8, 9, 10];
 
-const arr3 = [...arr1, ...arr2];
+// const arr3 = [...arr1, ...arr2];
 
-console.log(arr3);
+// console.log(arr3);
 
-// Alternative to Function.prototype.apply
-function sayHello(x, y, z) {
-  console.log(`Hello ${x} ${y} ${z}`);
-}
+// // Alternative to Function.prototype.apply
+// function sayHello(x, y, z) {
+//   console.log(`Hello ${x} ${y} ${z}`);
+// }
 
-const helloArray = ["bob", "jane", "mike"];
-// sayHello.apply(null, helloArray);
+// const helloArray = ["bob", "jane", "mike"];
+// // sayHello.apply(null, helloArray);
 
-sayHello(...helloArray);
+// sayHello(...helloArray);
 
-const res1 = ["kar", "spain", "usa"];
-const res2 = ["mango", "apple", "grapes"];
-const res3 = ["rice", "sugar", "ilaci"];
+// const res1 = ["kar", "spain", "usa"];
+// const res2 = ["mango", "apple", "grapes"];
+// const res3 = ["rice", "sugar", "ilaci"];
 
-const result = res1.concat(res2, res3);
-console.log(result);
+// const result = res1.concat(res2, res3);
+// console.log(result);
 
-const num1 = [1, 2, 3, 6, 7, 8];
-const num2 = [4, 5];
+// const num1 = [1, 2, 3, 6, 7, 8];
+// const num2 = [4, 5];
 
-function data(arr1, arr2, index) {
-  const firstarr = arr1.slice(0, index);
-  const secondarr = arr1.slice(index);
+// function data(arr1, arr2, index) {
+//   const firstarr = arr1.slice(0, index);
+//   const secondarr = arr1.slice(index);
 
-  const res = [...firstarr, ...arr2, ...secondarr];
-  console.log(res, "final");
-}
+//   const res = [...firstarr, ...arr2, ...secondarr];
+//   console.log(res, "final");
+// }
 
-data(num1, num2, 3);
+// data(num1, num2, 3);
 
-const obj = {
-  id: 1,
-  sayHi() {
-    console.log("helloe");
-  },
-  welcome() {
-    console.log("welcome to pak");
-  },
-};
+// const obj = {
+//   id: 1,
+//   sayHi() {
+//     console.log("helloe");
+//   },
+//   welcome() {
+//     console.log("welcome to pak");
+//   },
+// };
 
-obj.sayHi();
+// obj.sayHi();
 
-obj.welcome();
+// obj.welcome();
+
+//  ****************************  JavaScript Logical Questions ********************************************
+
+// 1) **************Finding duplicate elements in a given array ******************
+
+const duplicateArray = [1, 2, 2, 3, 4, 5, 8, 5, 5, 6];
+
+const duplicates = duplicateArray.filter((item, index, arr) => {
+  console.log(arr.indexOf(item), "index");
+  return arr.indexOf(item) !== index;
+});
+console.log(duplicates);
