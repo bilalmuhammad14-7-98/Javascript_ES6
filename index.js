@@ -1470,10 +1470,24 @@
 
 // 6) **************  Finding unique values in an array ******************
 
-const arr = [10, 4, 5, 65, 24, 33, 32, 32, 10, 4, 5];
+// const arr = [10, 4, 5, 65, 24, 33, 32, 32, 10, 4, 5];
 
-const uniquevalues = arr.filter((item, index, arr) => {
-  return arr.indexOf(item) == index;
+// const uniquevalues = arr.filter((item, index, arr) => {
+//   return arr.indexOf(item) == index;
+// });
+
+// console.log(uniquevalues);
+
+// 7) **************  Finding unique values in an array in sorted order ******************
+
+const arrOfNums = [10, 4, 5, 65, 24, 33, 32, 32, 10, 4, 5];
+
+const uniqueArr = arrOfNums.filter((ele, index, arr) => {
+  return arr.indexOf(ele) == index;
 });
 
-console.log(uniquevalues);
+const sortedarr = uniqueArr.sort((a, b) => {
+  return a - b;
+});
+
+console.log(sortedarr);
