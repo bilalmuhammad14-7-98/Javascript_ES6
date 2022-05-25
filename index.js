@@ -1451,11 +1451,19 @@
 
 // 4) **************How To Sort a Number array ******************
 
-const arr = [10, 8, 4, 5, 76, 3, 4, 12];
+// const arr = [10, 8, 4, 5, 76, 3, 4, 12];
 
-const sortedArray = arr.sort((a, b) => {
-  console.log(a - b);
-  return a - b;
-});
+// const sortedArray = arr.sort((a, b) => {
+//   console.log(a - b);
+//   return a - b;
+// });
 
-console.log(sortedArray);
+// console.log(sortedArray);
+
+// 5) **************How To Sort a strig array ******************
+
+const stringArr = ["b", "c", "d", "a", "e"];
+
+const sortedArr = stringArr.sort();
+
+console.log(sortedArr);
