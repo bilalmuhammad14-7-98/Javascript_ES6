@@ -1506,12 +1506,27 @@
 
 // 8) **************  Finding Minimum  value in a numbered array ********************
 
-const numberArray = [2, 34, 234, 2341, 1, 12, 34, 1, 0];
+// const numberArray = [2, 34, 234, 2341, 1, 12, 34, 1, 0];
 
-function minValue(arr) {
-  return arr.reduce(function (prev, curr) {
-    return prev < curr ? prev : curr;
-  });
-}
+// function minValue(arr) {
+//   return arr.reduce(function (prev, curr) {
+//     return prev < curr ? prev : curr;
+//   });
+// }
 
-console.log(minValue(numberArray));
+// console.log(minValue(numberArray));
+
+// 9) **************  Finding Average of Numbers in a Numbered Array ********************
+
+const id = [5, 5, 10, 20, 10];
+
+const totalCount = id.reduce(function (a, b) {
+  return a + b;
+});
+
+const arrLength = id.length;
+
+console.log(totalCount, arrLength);
+
+const Average = totalCount / arrLength;
+console.log(Average);
