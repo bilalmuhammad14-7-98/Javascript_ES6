@@ -1462,8 +1462,18 @@
 
 // 5) **************How To Sort a strig array ******************
 
-const stringArr = ["b", "c", "d", "a", "e"];
+// const stringArr = ["b", "c", "d", "a", "e"];
 
-const sortedArr = stringArr.sort();
+// const sortedArr = stringArr.sort();
 
-console.log(sortedArr);
+// console.log(sortedArr);
+
+// 6) **************  Finding unique values in an array ******************
+
+const arr = [10, 4, 5, 65, 24, 33, 32, 32, 10, 4, 5];
+
+const uniquevalues = arr.filter((item, index, arr) => {
+  return arr.indexOf(item) == index;
+});
+
+console.log(uniquevalues);
