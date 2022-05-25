@@ -1480,14 +1480,26 @@
 
 // 7) **************  Finding unique values in an array in sorted order ******************
 
-const arrOfNums = [10, 4, 5, 65, 24, 33, 32, 32, 10, 4, 5];
+// const arrOfNums = [10, 4, 5, 65, 24, 33, 32, 32, 10, 4, 5];
 
-const uniqueArr = arrOfNums.filter((ele, index, arr) => {
-  return arr.indexOf(ele) == index;
-});
+// const uniqueArr = arrOfNums.filter((ele, index, arr) => {
+//   return arr.indexOf(ele) == index;
+// });
 
-const sortedarr = uniqueArr.sort((a, b) => {
-  return a - b;
-});
+// const sortedarr = uniqueArr.sort((a, b) => {
+//   return a - b;
+// });
 
-console.log(sortedarr);
+// console.log(sortedarr);
+
+// 8) **************  Finding Maximum value in a numbered array ********************
+
+const numberArr = [2, 5, 72, 34, 5, 7, 23, 201, 203];
+
+const maxValue = (arr) => {
+  return arr.reduce(function (prev, curr) {
+    return prev > curr ? prev : curr;
+  });
+};
+
+console.log(maxValue(numberArr));
