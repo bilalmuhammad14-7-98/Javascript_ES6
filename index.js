@@ -1494,12 +1494,24 @@
 
 // 8) **************  Finding Maximum value in a numbered array ********************
 
-const numberArr = [2, 5, 72, 34, 5, 7, 23, 201, 203];
+// const numberArr = [2, 5, 72, 34, 5, 7, 23, 201, 203];
 
-const maxValue = (arr) => {
+// const maxValue = (arr) => {
+//   return arr.reduce(function (prev, curr) {
+//     return prev > curr ? prev : curr;
+//   });
+// };
+
+// console.log(maxValue(numberArr));
+
+// 8) **************  Finding Minimum  value in a numbered array ********************
+
+const numberArray = [2, 34, 234, 2341, 1, 12, 34, 1, 0];
+
+function minValue(arr) {
   return arr.reduce(function (prev, curr) {
-    return prev > curr ? prev : curr;
+    return prev < curr ? prev : curr;
   });
-};
+}
 
-console.log(maxValue(numberArr));
+console.log(minValue(numberArray));
